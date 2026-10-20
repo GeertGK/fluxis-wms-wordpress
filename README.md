@@ -4,7 +4,7 @@ The WordPress plugin that connects a WooCommerce store to [Fluxis](https://fluxi
 
 ## Requirements
 
-- Runtime: WordPress 7.1+, WooCommerce 11.2+, PHP 8.1+. The plugin has its own PSR-4 autoloader for `src/` and no runtime Composer dependencies.
+- Runtime: WordPress 6.6 or newer (tested up to 7.1), WooCommerce 9.0 or newer (tested up to 11.2), PHP 8.1 or newer. The plugin has its own PSR-4 autoloader for `src/` and no runtime Composer dependencies.
 - Development: PHP 8.3+ and Composer (Pest 4).
 
 ## Layout
