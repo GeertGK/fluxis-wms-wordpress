@@ -1,14 +1,14 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Fluxis for WooCommerce 1.0.0\n"
-"Report-Msgid-Bugs-To: https://fluxis.app\n"
+"Report-Msgid-Bugs-To: https://fluxis.io\n"
 "Last-Translator: Fluxis\n"
 "Language-Team: Dutch\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"POT-Creation-Date: 2026-10-19T16:06:46+00:00\n"
-"PO-Revision-Date: 2026-10-19 18:00+0200\n"
+"POT-Creation-Date: 2026-10-20T19:18:34+00:00\n"
+"PO-Revision-Date: 2026-10-20 21:20+0200\n"
 "Language: nl_NL\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: WP-CLI 2.12.0\n"
@@ -22,8 +22,8 @@ msgstr "Fluxis voor WooCommerce"
 #. Plugin URI of the plugin
 #. Author URI of the plugin
 #: fluxis-for-woocommerce.php
-msgid "https://fluxis.app"
-msgstr "https://fluxis.app"
+msgid "https://fluxis.io"
+msgstr "https://fluxis.io"
 
 #. Description of the plugin
 #: fluxis-for-woocommerce.php
@@ -32,6 +32,9 @@ msgstr "Koppelt WooCommerce aan Fluxis: synchroniseer producten naar Fluxis en o
 
 #. Author of the plugin
 #: fluxis-for-woocommerce.php
+msgid "Haste"
+msgstr "Haste"
+
 #: src/Admin/ProductMetaBox.php:49
 #: src/Admin/SettingsPage.php:56
 #: src/Admin/SettingsPage.php:57
@@ -272,12 +275,12 @@ msgid "Status refreshed."
 msgstr "Status vernieuwd."
 
 #: src/Admin/SettingsPage.php:445
-msgid "Enter a valid Fluxis address, for example https://yourcompany.fluxis.app."
-msgstr "Vul een geldig Fluxis-adres in, bijvoorbeeld https://jouwbedrijf.fluxis.app."
+msgid "Enter a valid Fluxis address, for example https://yourcompany.fluxis.io."
+msgstr "Vul een geldig Fluxis-adres in, bijvoorbeeld https://jouwbedrijf.fluxis.io."
 
 #: src/Admin/SettingsPage.php:446
-msgid "Enter a valid Fluxis address that starts with https://, for example https://yourcompany.fluxis.app."
-msgstr "Vul een geldig Fluxis-adres in dat begint met https://, bijvoorbeeld https://jouwbedrijf.fluxis.app."
+msgid "Enter a valid Fluxis address that starts with https://, for example https://yourcompany.fluxis.io."
+msgstr "Vul een geldig Fluxis-adres in dat begint met https://, bijvoorbeeld https://jouwbedrijf.fluxis.io."
 
 #: src/Admin/SettingsPage.php:447
 msgid "The pairing code must contain 24 letters and digits (A–Z, 2–7)."

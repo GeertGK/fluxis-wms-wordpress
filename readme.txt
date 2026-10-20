@@ -1,10 +1,10 @@
 === Fluxis for WooCommerce ===
 Contributors: haste
 Tags: woocommerce, product information, pim, ai, product images
-Requires at least: 7.1
+Requires at least: 6.6
 Tested up to: 7.1
 Requires PHP: 8.1
-WC requires at least: 11.2
+WC requires at least: 9.0
 WC tested up to: 11.2
 Stable tag: 1.0.0
 License: GPLv2 or later

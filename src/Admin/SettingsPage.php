@@ -381,7 +381,7 @@ final class SettingsPage
         echo '<input type="hidden" name="action" value="fluxis_connect">';
         echo '<table class="form-table" role="presentation"><tbody>';
         echo '<tr><th scope="row"><label for="fluxis-tenant-url">' . esc_html__('Fluxis address', 'fluxis-for-woocommerce') . '</label></th>';
-        echo '<td><input type="url" class="regular-text" id="fluxis-tenant-url" name="tenant_url" required placeholder="https://yourcompany.fluxis.app" autocomplete="off"></td></tr>';
+        echo '<td><input type="url" class="regular-text" id="fluxis-tenant-url" name="tenant_url" required placeholder="https://yourcompany.fluxis.io" autocomplete="off"></td></tr>';
         echo '<tr><th scope="row"><label for="fluxis-pairing-code">' . esc_html__('Pairing code', 'fluxis-for-woocommerce') . '</label></th>';
         echo '<td><input type="text" class="regular-text code" id="fluxis-pairing-code" name="pairing_code" required placeholder="XXXX-XXXX-XXXX-XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">';
         echo '<p class="description">' . esc_html__('Dashes and lowercase letters are fine.', 'fluxis-for-woocommerce') . '</p></td></tr>';
@@ -442,8 +442,8 @@ final class SettingsPage
     {
         return match ($code) {
             'tenant_url_invalid' => Plugin::allowHttp()
-                ? __('Enter a valid Fluxis address, for example https://yourcompany.fluxis.app.', 'fluxis-for-woocommerce')
-                : __('Enter a valid Fluxis address that starts with https://, for example https://yourcompany.fluxis.app.', 'fluxis-for-woocommerce'),
+                ? __('Enter a valid Fluxis address, for example https://yourcompany.fluxis.io.', 'fluxis-for-woocommerce')
+                : __('Enter a valid Fluxis address that starts with https://, for example https://yourcompany.fluxis.io.', 'fluxis-for-woocommerce'),
             'pairing_code_format' => __('The pairing code must contain 24 letters and digits (A–Z, 2–7).', 'fluxis-for-woocommerce'),
             'pairing_invalid' => __('The pairing code is invalid, expired or already used. Create a new code in Fluxis and try again.', 'fluxis-for-woocommerce'),
             'store_url_invalid' => __('Fluxis cannot reach this store. The store must be publicly reachable over https.', 'fluxis-for-woocommerce'),
