@@ -1,0 +1,21 @@
+# Files and directories excluded from the distributable plugin zip (bin/build-zip.sh).
+/.git
+/.github
+/.gitignore
+/.distignore
+/bin
+/tests
+/vendor
+/node_modules
+/dist
+/.phpunit.cache
+/.phpunit.result.cache
+/phpunit.xml
+/phpunit.xml.dist
+/pint.json
+/composer.json
+/composer.lock
+/README.md
+/CLAUDE.md
+/AGENTS.md
+.DS_Store

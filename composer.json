@@ -1,0 +1,42 @@
+{
+    "name": "haste/fluxis-for-woocommerce",
+    "description": "Fluxis for WooCommerce: sync WooCommerce products with Fluxis and optimize product texts and images with the Fluxis AI Optimizer.",
+    "type": "wordpress-plugin",
+    "license": "GPL-2.0-or-later",
+    "homepage": "https://fluxis.io",
+    "authors": [
+        {
+            "name": "Haste",
+            "homepage": "https://fluxis.io"
+        }
+    ],
+    "require": {
+        "php": ">=8.1"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.0",
+        "pestphp/pest": "^4.0"
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Fluxis\\WooCommerce\\": "src/",
+            "Tests\\": "tests/"
+        }
+    },
+    "config": {
+        "optimize-autoloader": true,
+        "preferred-install": "dist",
+        "sort-packages": true,
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true,
+    "scripts": {
+        "lint": "pint --test",
+        "lint:fix": "pint",
+        "test": "pest",
+        "build": "bin/build-zip.sh"
+    }
+}

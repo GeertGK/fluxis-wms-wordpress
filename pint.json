@@ -1,0 +1,7 @@
+{
+  "preset": "per",
+  "exclude": [
+    "vendor",
+    "dist"
+  ]
+}

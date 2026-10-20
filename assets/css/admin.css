@@ -1,0 +1,1396 @@
+/* Fluxis for WooCommerce – admin styles */
+
+:root {
+	--fluxis-brand-900: #2c265f;
+	--fluxis-brand-700: #41358b;
+	--fluxis-brand-500: #6c4f9a;
+	--fluxis-tint: rgba(108, 79, 154, 0.08);
+	--fluxis-text: #1d2327;
+	--fluxis-muted: #646970;
+	--fluxis-hairline: #c3c4c7;
+}
+
+/* WordPress' .button sets display, which beats the hidden attribute the scripts toggle. */
+.fluxis-wrap [hidden],
+.fluxis-panel [hidden],
+.fluxis-popover [hidden],
+.fluxis-modal [hidden] {
+	display: none !important;
+}
+
+.fluxis-wrap .fluxis-card {
+	background: #fff;
+	border: 1px solid #c3c4c7;
+	border-radius: 4px;
+	margin: 16px 0;
+	max-width: 960px;
+	padding: 4px 20px 16px;
+}
+
+.fluxis-badge {
+	border-radius: 10px;
+	font-size: 12px;
+	font-weight: 500;
+	margin-left: 8px;
+	padding: 2px 8px;
+	vertical-align: middle;
+}
+
+.fluxis-badge--ok {
+	background: #edfaef;
+	color: #00631d;
+}
+
+.fluxis-table th {
+	width: 220px;
+}
+
+.fluxis-muted {
+	color: #646970;
+}
+
+.fluxis-error {
+	color: #b32d2e;
+}
+
+.fluxis-upsell,
+.fluxis-notice-inline {
+	background: #fcf9e8;
+	border-left: 4px solid #dba617;
+	margin: 12px 0;
+	padding: 8px 12px;
+}
+
+.fluxis-upsell p {
+	margin: 6px 0;
+}
+
+.fluxis-progress__bar {
+	background: #f0f0f1;
+	border-radius: 4px;
+	height: 12px;
+	margin: 8px 0;
+	overflow: hidden;
+}
+
+.fluxis-progress__bar span {
+	background: var(--fluxis-brand-500);
+	display: block;
+	height: 100%;
+	transition: width 0.3s ease;
+	width: 0;
+}
+
+.fluxis-stepper {
+	display: flex;
+	gap: 24px;
+	list-style: none;
+	margin: 16px 0;
+	padding: 0;
+}
+
+.fluxis-stepper li {
+	color: #646970;
+	margin: 0;
+}
+
+.fluxis-stepper li span {
+	border: 1px solid currentColor;
+	border-radius: 50%;
+	display: inline-block;
+	height: 22px;
+	line-height: 22px;
+	margin-right: 4px;
+	text-align: center;
+	width: 22px;
+}
+
+.fluxis-stepper li.is-active,
+.fluxis-stepper li.is-done {
+	color: #1d2327;
+	font-weight: 600;
+}
+
+.fluxis-stepper li.is-active span {
+	background: var(--fluxis-brand-500);
+	border-color: var(--fluxis-brand-500);
+	color: #fff;
+}
+
+.fluxis-field {
+	margin: 12px 0 16px;
+	/* A fieldset is min-content wide by default; let it shrink on phones. */
+	min-width: 0;
+}
+
+.fluxis-field legend {
+	font-weight: 600;
+	margin-bottom: 6px;
+}
+
+.fluxis-check {
+	display: block;
+	margin: 4px 0;
+}
+
+.fluxis-presets {
+	display: grid;
+	gap: 8px;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+
+.fluxis-preset {
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	display: block;
+	padding: 8px;
+}
+
+.fluxis-preset span {
+	color: #646970;
+	display: block;
+	font-size: 12px;
+	margin-top: 2px;
+}
+
+.fluxis-product-list img {
+	height: 32px;
+	margin-right: 6px;
+	vertical-align: middle;
+	width: 32px;
+}
+
+.fluxis-custom-fields input {
+	box-sizing: border-box;
+	display: block;
+	margin: 4px 0;
+	max-width: 100%;
+}
+
+.fluxis-wizard__nav {
+	border-top: 1px solid #f0f0f1;
+	margin-top: 16px;
+	padding-top: 12px;
+}
+
+.fluxis-run__items {
+	margin-top: 12px;
+}
+
+/* Product panel (below Publish) */
+#fluxis-ai .postbox-header {
+	background: linear-gradient(90deg, rgba(44, 38, 95, 0.1) 0%, rgba(108, 79, 154, 0.08) 55%, rgba(65, 53, 139, 0) 100%);
+}
+
+#fluxis-ai .postbox-header .hndle {
+	color: var(--fluxis-brand-900);
+}
+
+.fluxis-panel {
+	color: #1d2327;
+}
+
+.fluxis-panel .fluxis-status {
+	margin: 0;
+}
+
+.fluxis-panel .fluxis-status__row {
+	align-items: baseline;
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 112px minmax(0, 1fr);
+	padding: 4px 0;
+}
+
+.fluxis-panel .fluxis-status dt {
+	color: #646970;
+	margin: 0;
+}
+
+.fluxis-panel .fluxis-status dd {
+	margin: 0;
+	min-width: 0;
+	overflow-wrap: anywhere;
+}
+
+.fluxis-pill {
+	background: #f0f0f1;
+	border-radius: 999px;
+	color: #50575e;
+	display: inline-block;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 20px;
+	padding: 0 8px;
+	white-space: nowrap;
+}
+
+.fluxis-pill--ok {
+	background: #edfaef;
+	color: #00631d;
+}
+
+.fluxis-pill--warn {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+.fluxis-panel .fluxis-sku {
+	background: none;
+	font-size: 12px;
+	margin-left: 4px;
+	padding: 0;
+}
+
+.fluxis-panel time {
+	cursor: help;
+}
+
+.fluxis-panel .fluxis-status__warning {
+	background: #fcf9e8;
+	border-radius: 4px;
+	color: #1d2327;
+	margin: 8px 0 0;
+	padding: 8px;
+}
+
+.fluxis-panel .fluxis-status__mode {
+	background: var(--fluxis-tint);
+	border-radius: 4px;
+	color: var(--fluxis-brand-900);
+	margin: 8px 0 0;
+	padding: 8px;
+}
+
+.fluxis-panel .fluxis-status__adhoc {
+	color: var(--fluxis-muted);
+	list-style: none;
+	margin: 8px 0 0;
+	padding: 0;
+}
+
+.fluxis-panel .fluxis-status__adhoc li {
+	margin: 0 0 2px;
+}
+
+.fluxis-panel .fluxis-status__adhoc .fluxis-status__adhoc-error {
+	color: #8a2424;
+}
+
+.fluxis-panel__actions {
+	border-top: 1px solid #c3c4c7;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	margin: 12px -12px 0;
+	padding: 12px 12px 0;
+}
+
+.fluxis-panel__actions .button {
+	justify-content: center;
+	margin: 0;
+	min-height: 32px;
+	text-align: center;
+	width: 100%;
+}
+
+.fluxis-panel__secondary {
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 1fr 1fr;
+}
+
+.fluxis-panel__secondary .button {
+	line-height: 1.2;
+	padding: 4px 6px;
+	white-space: normal;
+}
+
+.fluxis-panel__message {
+	margin: 8px 0 0;
+}
+
+.fluxis-badge--warn {
+	background: #fcf0f1;
+	color: #8a2424;
+}
+
+/* Shared Fluxis button: secondary by default, --primary with the brand gradient. */
+.button.fluxis-ai-button {
+	transition: background-color 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, color 0.15s ease;
+	align-items: center;
+	background: #fff;
+	border: 1px solid var(--fluxis-brand-500);
+	border-radius: 4px;
+	color: var(--fluxis-brand-700);
+	display: inline-flex;
+	gap: 6px;
+	justify-content: center;
+	white-space: nowrap;
+}
+
+.button.fluxis-ai-button:hover,
+.button.fluxis-ai-button:focus {
+	background: var(--fluxis-tint);
+	border-color: var(--fluxis-brand-700);
+	color: var(--fluxis-brand-900);
+}
+
+.button.fluxis-ai-button:hover:not(:disabled) {
+	box-shadow: 0 4px 12px rgba(65, 53, 139, 0.18);
+	transform: translateY(-1px);
+}
+
+.button.fluxis-ai-button:active:not(:disabled) {
+	box-shadow: none;
+	transform: translateY(0);
+}
+
+.button.fluxis-ai-button:hover .fluxis-ai-svg {
+	transform: rotate(-12deg) scale(1.1);
+}
+
+.fluxis-ai-svg {
+	transition: transform 0.2s ease;
+}
+
+.button.fluxis-ai-button:focus {
+	box-shadow: 0 0 0 1px #fff, 0 0 0 3px var(--fluxis-brand-500);
+	outline: none;
+}
+
+.button.fluxis-ai-button--primary {
+	background: linear-gradient(135deg, var(--fluxis-brand-500) 0%, var(--fluxis-brand-700) 100%);
+	border-color: var(--fluxis-brand-700);
+	color: #fff;
+}
+
+.button.fluxis-ai-button--primary:hover,
+.button.fluxis-ai-button--primary:focus {
+	background: linear-gradient(135deg, #5d4387 0%, var(--fluxis-brand-900) 100%);
+	border-color: var(--fluxis-brand-900);
+	color: #fff;
+}
+
+.button.fluxis-ai-button:disabled,
+.button.fluxis-ai-button[disabled] {
+	background: #f6f7f7 !important;
+	border-color: #dcdcde !important;
+	color: #a7aaad !important;
+}
+
+/* Disabled while the setup in Fluxis is not finished (title says why). */
+.button.fluxis-ai-button[aria-disabled="true"],
+.fluxis-ai-icon[aria-disabled="true"] {
+	cursor: not-allowed;
+}
+
+.fluxis-ai-icon:disabled {
+	color: #a7aaad;
+}
+
+.fluxis-ai-icon:disabled:hover,
+.fluxis-ai-icon:disabled:focus {
+	background: transparent;
+	color: #a7aaad;
+}
+
+.fluxis-ai-icon:disabled:hover .fluxis-ai-svg {
+	transform: none;
+}
+
+.fluxis-ai-button .fluxis-ai-svg {
+	height: 16px;
+	width: 16px;
+}
+
+.wp-media-buttons .fluxis-ai-editor-button {
+	margin-left: 4px;
+	vertical-align: top;
+}
+
+.wp-media-buttons .fluxis-ai-editor-button .fluxis-ai-svg {
+	margin: 0;
+}
+
+/* Next to Yoast's own "Use AI" buttons: same height, one line. */
+.fluxis-yoast-button.button {
+	border-radius: 6px;
+	font-size: 13px;
+	line-height: 1.25;
+	margin: 0 0 0 8px;
+	min-height: 0;
+	padding: 4px 10px;
+	vertical-align: middle;
+}
+
+.yst-root + .fluxis-yoast-button {
+	display: inline-flex;
+}
+
+/* Per-field icon inside the input's row */
+.fluxis-ai-field {
+	display: block;
+	position: relative;
+}
+
+.woocommerce_options_panel .form-field .fluxis-ai-field {
+	float: left;
+	width: 50%;
+}
+
+.fluxis-ai-field > input[type="text"],
+.fluxis-ai-field > textarea {
+	box-sizing: border-box;
+	float: none !important;
+	margin: 0;
+	padding-right: 34px !important;
+	width: 100% !important;
+}
+
+.fluxis-ai-icon {
+	align-items: center;
+	background: transparent;
+	border: 0;
+	border-radius: 50%;
+	color: var(--fluxis-brand-500);
+	cursor: pointer;
+	display: inline-flex;
+	height: 26px;
+	justify-content: center;
+	margin: 0;
+	padding: 0;
+	width: 26px;
+}
+
+.fluxis-ai-field > .fluxis-ai-icon {
+	position: absolute;
+	right: 4px;
+	top: 50%;
+	transform: translateY(-50%);
+}
+
+.fluxis-ai-field--textarea > .fluxis-ai-icon {
+	top: 4px;
+	transform: none;
+}
+
+.fluxis-ai-icon:hover,
+.fluxis-ai-icon:focus {
+	background: rgba(108, 79, 154, 0.14);
+	color: var(--fluxis-brand-700);
+	outline: none;
+}
+
+.fluxis-ai-icon:hover .fluxis-ai-svg {
+	transform: rotate(-12deg) scale(1.15);
+}
+
+.fluxis-ai-icon {
+	transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.button.fluxis-ai-button,
+	.fluxis-ai-svg {
+		transition: none;
+	}
+
+	.button.fluxis-ai-button:hover:not(:disabled),
+	.button.fluxis-ai-button:hover .fluxis-ai-svg,
+	.fluxis-ai-icon:hover .fluxis-ai-svg {
+		transform: none;
+	}
+}
+
+.fluxis-ai-icon:focus-visible {
+	box-shadow: 0 0 0 2px var(--fluxis-brand-500);
+}
+
+.fluxis-ai-svg {
+	flex: none;
+}
+
+/* WooCommerce puts a description below an input it directly follows; keep that with the wrapper. */
+.woocommerce_options_panel .fluxis-ai-field + .description {
+	clear: both;
+	display: block;
+	margin-left: 0;
+}
+
+
+/* Gallery overlay (bottom left, away from WooCommerce's delete button) */
+#product_images_container ul.product_images li.image {
+	position: relative;
+}
+
+#product_images_container .fluxis-gallery-ai {
+	background: #fff;
+	bottom: 4px;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	left: 4px;
+	position: absolute;
+}
+
+/* Fluxis AI card (media sidebar, featured image box): compact */
+.fluxis-ai-card {
+	background: #f7f5fb;
+	border: 1px solid #d9d0ea;
+	border-radius: 6px;
+	box-sizing: border-box;
+	clear: both;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	margin: 8px 0;
+	padding: 8px;
+}
+
+.fluxis-ai-card p {
+	margin: 0;
+}
+
+.fluxis-ai-card__head {
+	align-items: center;
+	color: var(--fluxis-brand-900);
+	display: flex;
+	font-size: 12px;
+	font-weight: 600;
+	gap: 4px;
+	line-height: 16px;
+}
+
+.fluxis-ai-card__head .fluxis-ai-svg {
+	color: var(--fluxis-brand-500);
+	height: 14px;
+	width: 14px;
+}
+
+.fluxis-ai-card__help {
+	color: var(--fluxis-muted);
+	font-size: 11px;
+	line-height: 1.4;
+}
+
+.fluxis-ai-card .button.fluxis-ai-button {
+	font-size: 12px;
+	line-height: 1.5;
+	min-height: 26px;
+	padding: 0 8px;
+	width: 100%;
+}
+
+.fluxis-ai-card .fluxis-ai-button .fluxis-ai-svg {
+	height: 14px;
+	width: 14px;
+}
+
+.fluxis-ai-card--featured .fluxis-ai-card__help {
+	display: none;
+}
+
+.media-sidebar .fluxis-ai-card {
+	float: left;
+	width: 100%;
+}
+
+/* Popover */
+.fluxis-popover {
+	background: #fff;
+	border: 1px solid #e2dcef;
+	border-radius: 12px;
+	box-shadow: 0 18px 48px rgba(44, 38, 95, 0.18), 0 2px 6px rgba(44, 38, 95, 0.08);
+	box-sizing: border-box;
+	color: var(--fluxis-text);
+	max-height: 80vh;
+	overflow: auto;
+	position: absolute;
+	z-index: 170000;
+}
+
+.fluxis-popover__head {
+	align-items: center;
+	background: linear-gradient(120deg, rgba(44, 38, 95, 0.09) 0%, rgba(108, 79, 154, 0.07) 60%, rgba(65, 53, 139, 0) 100%);
+	border-bottom: 1px solid #ece7f5;
+	display: flex;
+	gap: 8px;
+	justify-content: space-between;
+	padding: 12px 14px;
+}
+
+.fluxis-popover__heading {
+	align-items: center;
+	display: flex;
+	gap: 10px;
+	min-width: 0;
+}
+
+.fluxis-popover__mark {
+	align-items: center;
+	background: linear-gradient(135deg, var(--fluxis-brand-500), var(--fluxis-brand-700));
+	border-radius: 8px;
+	color: #fff;
+	display: inline-flex;
+	flex: none;
+	height: 30px;
+	justify-content: center;
+	width: 30px;
+}
+
+.fluxis-popover__titles {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.fluxis-popover__titles strong {
+	color: var(--fluxis-brand-900);
+	font-size: 14px;
+	line-height: 1.3;
+}
+
+.fluxis-popover__subtitle {
+	color: var(--fluxis-muted);
+	font-size: 12px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fluxis-popover__close,
+.fluxis-modal__close {
+	align-items: center;
+	background: transparent;
+	border: 0;
+	border-radius: 50%;
+	color: var(--fluxis-muted);
+	cursor: pointer;
+	display: inline-flex;
+	flex: none;
+	font-size: 20px;
+	height: 28px;
+	justify-content: center;
+	line-height: 1;
+	padding: 0;
+	text-decoration: none;
+	width: 28px;
+}
+
+.fluxis-popover__close:hover,
+.fluxis-popover__close:focus,
+.fluxis-modal__close:hover,
+.fluxis-modal__close:focus {
+	background: var(--fluxis-tint);
+	color: var(--fluxis-brand-900);
+	outline: none;
+}
+
+.fluxis-popover__body {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+	padding: 14px;
+}
+
+.fluxis-popover__body > .fluxis-field,
+.fluxis-popover__options .fluxis-field {
+	margin: 0 0 10px;
+}
+
+.fluxis-popover__options .fluxis-field:last-child {
+	margin-bottom: 0;
+}
+
+.fluxis-popover__summary {
+	align-items: center;
+	background: #f6f7f7;
+	border-radius: 8px;
+	color: var(--fluxis-muted);
+	display: flex;
+	font-size: 12px;
+	justify-content: space-between;
+	padding: 6px 10px;
+}
+
+.fluxis-popover__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	margin: 0;
+}
+
+.fluxis-popover__result:empty {
+	display: none;
+}
+
+.fluxis-popover select,
+.fluxis-modal select {
+	max-width: 100%;
+}
+
+/* Optional instruction */
+.fluxis-link-button {
+	background: none;
+	border: 0;
+	color: var(--fluxis-brand-700);
+	cursor: pointer;
+	font-size: 13px;
+	font-weight: 500;
+	padding: 4px 0;
+	text-align: left;
+}
+
+.fluxis-link-button:hover,
+.fluxis-link-button:focus {
+	color: var(--fluxis-brand-900);
+	outline: none;
+	text-decoration: underline;
+}
+
+.fluxis-hint--top {
+	margin: 0 0 2px;
+}
+
+.fluxis-hint {
+	color: var(--fluxis-muted);
+	font-size: 12px;
+	margin: 6px 0 0;
+}
+
+.fluxis-input {
+	border-color: #dcdcde;
+	border-radius: 8px;
+	box-sizing: border-box;
+	margin-top: 8px;
+	padding: 8px 10px;
+	width: 100%;
+}
+
+.fluxis-input:focus {
+	border-color: var(--fluxis-brand-500);
+	box-shadow: 0 0 0 1px var(--fluxis-brand-500);
+}
+
+.fluxis-inline-field {
+	align-items: center;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px 10px;
+}
+
+.fluxis-inline-field label {
+	color: var(--fluxis-muted);
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.fluxis-inline-field select {
+	border-radius: 8px;
+	flex: 1 1 160px;
+	min-width: 0;
+}
+
+.button.fluxis-ai-button--block {
+	min-height: 36px;
+	width: 100%;
+}
+
+.fluxis-shortcut {
+	color: #8c8f94;
+	font-size: 11px;
+	margin: 0;
+	text-align: center;
+}
+
+/* Suggestion card */
+.fluxis-suggestion {
+	background: linear-gradient(180deg, #fbfaff 0%, #fff 100%);
+	border: 1px solid #e2dcef;
+	border-radius: 10px;
+	padding: 10px 12px 12px;
+}
+
+.fluxis-suggestion__label {
+	color: var(--fluxis-brand-500);
+	font-size: 11px;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	margin: 0 0 4px;
+	text-transform: uppercase;
+}
+
+.fluxis-suggestion__text {
+	font-size: 13px;
+	line-height: 1.55;
+	max-height: 16em;
+	overflow: auto;
+	white-space: pre-wrap;
+}
+
+.fluxis-suggestion__text--rich {
+	white-space: normal;
+}
+
+.fluxis-suggestion__meta {
+	color: #8c8f94;
+	font-size: 11px;
+	margin: 6px 0 10px;
+}
+
+.fluxis-suggestion__actions {
+	align-items: center;
+	display: flex;
+	gap: 12px;
+}
+
+/* Skeleton */
+.fluxis-skeleton {
+	border: 1px dashed #e2dcef;
+	border-radius: 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+	padding: 12px;
+}
+
+.fluxis-skeleton__label {
+	color: var(--fluxis-brand-700);
+	font-size: 12px;
+	font-weight: 500;
+	margin: 0;
+}
+
+.fluxis-skeleton__bar {
+	animation: fluxis-shimmer 1.4s ease-in-out infinite;
+	background: linear-gradient(90deg, #efeaf7 0%, #f8f6fc 50%, #efeaf7 100%);
+	background-size: 200% 100%;
+	border-radius: 6px;
+	display: block;
+	height: 10px;
+}
+
+@keyframes fluxis-shimmer {
+	0% {
+		background-position: 200% 0;
+	}
+
+	100% {
+		background-position: -200% 0;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.fluxis-skeleton__bar {
+		animation: none;
+	}
+}
+
+.fluxis-busy {
+	align-items: center;
+	display: flex;
+	gap: 6px;
+}
+
+.fluxis-busy .spinner {
+	float: none;
+	margin: 0;
+}
+
+/* Modal */
+.fluxis-modal-backdrop {
+	align-items: center;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	inset: 0;
+	justify-content: center;
+	position: fixed;
+	z-index: 160000;
+}
+
+.fluxis-modal {
+	background: #fff;
+	border-radius: 8px;
+	box-shadow: 0 12px 40px rgba(0, 0, 0, 0.25);
+	color: #1d2327;
+	box-sizing: border-box;
+	display: flex;
+	flex-direction: column;
+	max-height: calc(100vh - 40px);
+	max-width: 760px;
+	width: calc(100vw - 24px);
+}
+
+.fluxis-modal__head {
+	align-items: center;
+	background: linear-gradient(120deg, rgba(44, 38, 95, 0.09) 0%, rgba(108, 79, 154, 0.07) 60%, rgba(65, 53, 139, 0) 100%);
+	border-bottom: 1px solid #ece7f5;
+	border-radius: 8px 8px 0 0;
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 16px;
+}
+
+.fluxis-modal__head h2 {
+	color: var(--fluxis-brand-900);
+	font-size: 16px;
+	margin: 0;
+}
+
+.fluxis-modal__body {
+	overflow: auto;
+	padding: 4px 16px 16px;
+}
+
+.fluxis-modal__footer {
+	border-top: 1px solid #dcdcde;
+	display: flex;
+	gap: 8px;
+	justify-content: flex-end;
+	padding: 10px 16px;
+}
+
+body.fluxis-modal-open {
+	overflow: hidden;
+}
+
+/* Dialog sections */
+.fluxis-section {
+	border: 1px solid #e6e1f0;
+	border-radius: 10px;
+	margin: 12px 0;
+	padding: 14px;
+}
+
+.fluxis-section__head h3 {
+	color: var(--fluxis-brand-900);
+	font-size: 14px;
+	margin: 0;
+}
+
+.fluxis-section__head .fluxis-hint {
+	margin: 2px 0 0;
+}
+
+.fluxis-section__body {
+	margin-top: 12px;
+}
+
+.fluxis-subsection {
+	border-top: 1px dashed #e6e1f0;
+	margin-top: 12px;
+	padding-top: 12px;
+}
+
+.fluxis-subsection__title {
+	font-weight: 600;
+	margin: 0;
+}
+
+.fluxis-empty {
+	color: var(--fluxis-muted);
+	font-style: italic;
+	margin: 0;
+}
+
+/* Selectable chips */
+.fluxis-choices {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 8px;
+}
+
+.fluxis-choice {
+	align-items: center;
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 999px;
+	cursor: pointer;
+	display: inline-flex;
+	gap: 6px;
+	padding: 5px 12px 5px 8px;
+	transition: border-color 0.15s ease, background-color 0.15s ease;
+	user-select: none;
+}
+
+.fluxis-choice input {
+	height: 1px;
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.fluxis-choice__tick {
+	align-items: center;
+	border: 1px solid #c3c4c7;
+	border-radius: 50%;
+	color: transparent;
+	display: inline-flex;
+	font-size: 10px;
+	height: 16px;
+	justify-content: center;
+	width: 16px;
+}
+
+.fluxis-choice:hover {
+	border-color: var(--fluxis-brand-500);
+}
+
+.fluxis-choice.is-selected {
+	background: var(--fluxis-tint);
+	border-color: var(--fluxis-brand-500);
+	color: var(--fluxis-brand-900);
+}
+
+.fluxis-choice.is-selected .fluxis-choice__tick {
+	background: var(--fluxis-brand-500);
+	border-color: var(--fluxis-brand-500);
+	color: #fff;
+}
+
+.fluxis-choice:focus-within {
+	box-shadow: 0 0 0 2px var(--fluxis-brand-500);
+}
+
+.fluxis-chip {
+	background: #f0f0f1;
+	border-radius: 999px;
+	color: #50575e;
+	display: inline-block;
+	font-size: 11px;
+	line-height: 18px;
+	padding: 0 7px;
+}
+
+/* "+ Add …" action */
+.button.fluxis-add-button {
+	border-style: dashed;
+	margin-top: 12px;
+	min-height: 34px;
+	width: 100%;
+}
+
+.fluxis-add-button__plus {
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1;
+}
+
+/* Image tiles */
+.fluxis-tiles {
+	display: grid;
+	gap: 10px;
+	grid-template-columns: repeat(auto-fill, minmax(170px, 1fr));
+}
+
+.fluxis-tile {
+	background: #fff;
+	border: 1px solid #dcdcde;
+	border-radius: 10px;
+	overflow: hidden;
+	transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fluxis-tile:hover {
+	border-color: var(--fluxis-brand-500);
+}
+
+.fluxis-tile.is-selected {
+	border-color: var(--fluxis-brand-500);
+	box-shadow: 0 0 0 1px var(--fluxis-brand-500);
+}
+
+.fluxis-tile__pick {
+	cursor: pointer;
+	display: block;
+}
+
+.fluxis-tile__check {
+	height: 1px;
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.fluxis-tile:focus-within {
+	box-shadow: 0 0 0 2px var(--fluxis-brand-500);
+}
+
+.fluxis-tile__media {
+	aspect-ratio: 4 / 3;
+	background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 50% / 14px 14px;
+	display: block;
+	position: relative;
+}
+
+.fluxis-tile__media img {
+	height: 100%;
+	object-fit: contain;
+	width: 100%;
+}
+
+.fluxis-tile__tick {
+	align-items: center;
+	background: rgba(255, 255, 255, 0.92);
+	border: 1px solid #c3c4c7;
+	border-radius: 50%;
+	color: transparent;
+	display: inline-flex;
+	font-size: 12px;
+	height: 22px;
+	justify-content: center;
+	left: 8px;
+	position: absolute;
+	top: 8px;
+	width: 22px;
+}
+
+.fluxis-tile.is-selected .fluxis-tile__tick {
+	background: var(--fluxis-brand-500);
+	border-color: var(--fluxis-brand-500);
+	color: #fff;
+}
+
+.fluxis-tile__info {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+	padding: 8px 10px;
+}
+
+.fluxis-tile__info strong {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.fluxis-tile__usages {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 4px;
+}
+
+.fluxis-tile__controls {
+	border-top: 1px solid #f0f0f1;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	padding: 8px 10px 10px;
+}
+
+.fluxis-tile__controls .fluxis-field {
+	margin: 0;
+}
+
+.fluxis-tile__controls select {
+	border-radius: 6px;
+	width: 100%;
+}
+
+/* Switch */
+.fluxis-switch {
+	align-items: center;
+	cursor: pointer;
+	display: inline-flex;
+	gap: 8px;
+	margin-top: 4px;
+}
+
+.fluxis-switch input {
+	height: 1px;
+	opacity: 0;
+	position: absolute;
+	width: 1px;
+}
+
+.fluxis-switch__track {
+	background: #c3c4c7;
+	border-radius: 999px;
+	height: 18px;
+	position: relative;
+	transition: background-color 0.15s ease;
+	width: 32px;
+}
+
+.fluxis-switch__track::after {
+	background: #fff;
+	border-radius: 50%;
+	box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+	content: "";
+	height: 14px;
+	left: 2px;
+	position: absolute;
+	top: 2px;
+	transition: transform 0.15s ease;
+	width: 14px;
+}
+
+.fluxis-switch input:checked + .fluxis-switch__track {
+	background: var(--fluxis-brand-500);
+}
+
+.fluxis-switch input:checked + .fluxis-switch__track::after {
+	transform: translateX(14px);
+}
+
+.fluxis-switch input:focus-visible + .fluxis-switch__track {
+	box-shadow: 0 0 0 2px #fff, 0 0 0 4px var(--fluxis-brand-500);
+}
+
+/* Footer summary */
+.fluxis-modal__summary {
+	color: var(--fluxis-muted);
+	font-size: 12px;
+	margin-right: auto;
+}
+
+.fluxis-modal__footer {
+	align-items: center;
+}
+
+.fluxis-check__value {
+	font-size: 12px;
+}
+
+/* Proposals */
+.fluxis-proposal,
+.fluxis-image-result {
+	border: 1px solid #dcdcde;
+	border-radius: 4px;
+	margin: 8px 0;
+	padding: 8px 10px;
+}
+
+.fluxis-proposal h4,
+.fluxis-image-result h4 {
+	margin: 0 0 6px;
+}
+
+.fluxis-proposal.is-accepted,
+.fluxis-image-result.is-accepted {
+	border-color: #00a32a;
+}
+
+.fluxis-proposal__label {
+	color: #646970;
+	font-size: 11px;
+	margin: 6px 0 2px;
+	text-transform: uppercase;
+}
+
+.fluxis-proposal__before {
+	color: #646970;
+	max-height: 6em;
+	overflow: auto;
+	white-space: pre-wrap;
+}
+
+.fluxis-proposal__after {
+	background: #f6f7f7;
+	border-left: 3px solid var(--fluxis-brand-500);
+	max-height: 14em;
+	overflow: auto;
+	padding: 6px 8px;
+	white-space: pre-wrap;
+}
+
+.fluxis-proposal__after--rich {
+	white-space: normal;
+}
+
+.fluxis-proposal__actions {
+	margin: 8px 0 0;
+}
+
+.fluxis-image-result__pair {
+	display: grid;
+	gap: 8px;
+	grid-template-columns: 1fr 1fr;
+}
+
+.fluxis-image-result__pair figure {
+	background: repeating-conic-gradient(#f0f0f1 0% 25%, #fff 0% 50%) 50% / 16px 16px;
+	margin: 0;
+	min-height: 80px;
+	text-align: center;
+}
+
+.fluxis-image-result__pair img {
+	display: block;
+	height: auto;
+	max-width: 100%;
+}
+
+.fluxis-image-result__pair figcaption {
+	background: #fff;
+	color: #646970;
+	font-size: 12px;
+}
+
+.fluxis-image-rows {
+	margin: 8px 0;
+}
+
+.fluxis-image-row {
+	align-items: center;
+	border-bottom: 1px solid #f0f0f1;
+	display: grid;
+	gap: 6px 10px;
+	grid-template-columns: auto 56px 1fr;
+	padding: 8px 0;
+}
+
+.fluxis-image-row img {
+	height: 56px;
+	object-fit: cover;
+	width: 56px;
+}
+
+.fluxis-image-row__info {
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+}
+
+.fluxis-image-row__controls {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	grid-column: 2 / -1;
+}
+
+.fluxis-image-row__controls .fluxis-field {
+	margin: 0;
+}
+
+.fluxis-result-section {
+	margin-bottom: 16px;
+}
+
+@media (max-width: 600px) {
+	.fluxis-image-result__pair {
+		grid-template-columns: 1fr;
+	}
+
+	.fluxis-modal {
+		max-height: 100vh;
+		width: 100vw;
+	}
+
+	.fluxis-modal-backdrop {
+		align-items: stretch;
+	}
+}
+
+/* Links inside Fluxis dialogs use the brand colour, never WP blue. */
+.wp-core-ui .fluxis-popover .button-link,
+.wp-core-ui .fluxis-modal .button-link,
+.fluxis-popover a,
+.fluxis-modal a {
+	color: var(--fluxis-brand-700);
+}
+
+.wp-core-ui .fluxis-popover .button-link:hover,
+.wp-core-ui .fluxis-modal .button-link:hover {
+	color: var(--fluxis-brand-900);
+}

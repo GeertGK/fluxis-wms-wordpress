@@ -1,0 +1,1430 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Fluxis for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://fluxis.app\n"
+"Last-Translator: Fluxis\n"
+"Language-Team: Dutch\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2026-10-19T16:06:46+00:00\n"
+"PO-Revision-Date: 2026-10-19 18:00+0200\n"
+"Language: nl_NL\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"X-Generator: WP-CLI 2.12.0\n"
+"X-Domain: fluxis-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+#: fluxis-for-woocommerce.php
+msgid "Fluxis for WooCommerce"
+msgstr "Fluxis voor WooCommerce"
+
+#. Plugin URI of the plugin
+#. Author URI of the plugin
+#: fluxis-for-woocommerce.php
+msgid "https://fluxis.app"
+msgstr "https://fluxis.app"
+
+#. Description of the plugin
+#: fluxis-for-woocommerce.php
+msgid "Connects WooCommerce to Fluxis: sync products to Fluxis and optimize product texts and images with the Fluxis AI Optimizer."
+msgstr "Koppelt WooCommerce aan Fluxis: synchroniseer producten naar Fluxis en optimaliseer productteksten en -afbeeldingen met de Fluxis AI Optimizer."
+
+#. Author of the plugin
+#: fluxis-for-woocommerce.php
+#: src/Admin/ProductMetaBox.php:49
+#: src/Admin/SettingsPage.php:56
+#: src/Admin/SettingsPage.php:57
+#: src/Admin/SettingsPage.php:192
+msgid "Fluxis"
+msgstr "Fluxis"
+
+#. translators: 1: required PHP version, 2: current PHP version
+#: fluxis-for-woocommerce.php:57
+#, php-format
+msgid "Fluxis for WooCommerce requires PHP %1$s or newer. This site runs PHP %2$s."
+msgstr "Fluxis voor WooCommerce vereist PHP %1$s of nieuwer. Deze site draait PHP %2$s."
+
+#: src/Admin/BulkActions.php:49
+#: src/Admin/ProductMetaBox.php:155
+msgid "Sync to Fluxis"
+msgstr "Synchroniseren naar Fluxis"
+
+#: src/Admin/BulkActions.php:50
+#: src/Admin/Wizard.php:111
+msgid "Optimize text with Fluxis AI"
+msgstr "Tekst optimaliseren met Fluxis AI"
+
+#: src/Admin/BulkActions.php:51
+#: src/Admin/Wizard.php:111
+msgid "Optimize images with Fluxis AI"
+msgstr "Afbeeldingen optimaliseren met Fluxis AI"
+
+#. translators: %d: number of products queued for sync
+#: src/Admin/BulkActions.php:95
+#, php-format
+msgid "%d product queued for sync to Fluxis."
+msgid_plural "%d products queued for sync to Fluxis."
+msgstr[0] "%d product staat klaar om naar Fluxis te synchroniseren."
+msgstr[1] "%d producten staan klaar om naar Fluxis te synchroniseren."
+
+#: src/Admin/BulkActions.php:103
+msgid "View progress"
+msgstr "Voortgang bekijken"
+
+#: src/Admin/ProductScreen.php:85
+#: src/Admin/Strings.php:78
+#: src/Admin/Strings.php:165
+msgid "Fluxis AI"
+msgstr "Fluxis AI"
+
+#: src/Admin/ProductMetaBox.php:115
+#: src/Admin/SettingsPage.php:453
+#: src/Admin/Strings.php:66
+#: src/Admin/Wizard.php:119
+msgid "This store is not connected to Fluxis."
+msgstr "Deze winkel is niet gekoppeld aan Fluxis."
+
+#: src/Admin/ProductMetaBox.php:117
+#: src/Admin/Wizard.php:121
+msgid "Connect now"
+msgstr "Nu koppelen"
+
+#: src/Admin/ProductMetaBox.php:126
+msgid "Save the product first to use Fluxis."
+msgstr "Sla het product eerst op om Fluxis te gebruiken."
+
+#: src/Admin/SettingsPage.php:266
+#: src/Admin/Strings.php:52
+#: src/Admin/Wizard.php:328
+msgid "Open add-ons in Fluxis"
+msgstr "Add-ons openen in Fluxis"
+
+#: src/Admin/Wizard.php:172
+msgid "Run"
+msgstr "Uitvoeren"
+
+#: src/Admin/Strings.php:24
+msgid "Close"
+msgstr "Sluiten"
+
+#: src/Admin/Strings.php:115
+msgid "Images"
+msgstr "Afbeeldingen"
+
+#: src/Admin/Strings.php:118
+msgid "This product has no images."
+msgstr "Dit product heeft geen afbeeldingen."
+
+#: src/Admin/SettingsPage.php:74
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/Admin/SettingsPage.php:184
+#: src/Admin/SettingsPage.php:495
+#: src/Admin/Wizard.php:85
+msgid "You do not have permission to manage Fluxis."
+msgstr "Je hebt geen toestemming om Fluxis te beheren."
+
+#: src/Admin/SettingsPage.php:196
+msgid "The stored connection can no longer be decrypted (the site keys changed). Disconnect and pair this store again."
+msgstr "De opgeslagen koppeling kan niet meer worden ontsleuteld (de sitesleutels zijn gewijzigd). Ontkoppel en koppel deze winkel opnieuw."
+
+#: src/Admin/SettingsPage.php:220
+#: src/Admin/SettingsPage.php:221
+#: src/Admin/SettingsPage.php:477
+msgid "Unknown"
+msgstr "Onbekend"
+
+#: src/Admin/SettingsPage.php:224
+msgid "Active"
+msgstr "Actief"
+
+#: src/Admin/SettingsPage.php:224
+#: src/Admin/SettingsPage.php:245
+msgid "Not active"
+msgstr "Niet actief"
+
+#: src/Admin/SettingsPage.php:228
+msgid "Unlimited"
+msgstr "Onbeperkt"
+
+#. translators: %s: remaining AI budget (tokens)
+#: src/Admin/SettingsPage.php:231
+#, php-format
+msgid "%s tokens remaining"
+msgstr "Nog %s tokens"
+
+#: src/Admin/SettingsPage.php:236
+msgid "Fluxis environment"
+msgstr "Fluxis-omgeving"
+
+#: src/Admin/SettingsPage.php:237
+msgid "Integration"
+msgstr "Integratie"
+
+#: src/Admin/SettingsPage.php:238
+msgid "Connection ID"
+msgstr "Koppelings-ID"
+
+#: src/Admin/SettingsPage.php:239
+msgid "Paired at"
+msgstr "Gekoppeld op"
+
+#: src/Admin/SettingsPage.php:241
+msgid "AI Optimizer add-on"
+msgstr "AI Optimizer-add-on"
+
+#: src/Admin/SettingsPage.php:242
+msgid "AI budget"
+msgstr "AI-budget"
+
+#: src/Admin/SettingsPage.php:243
+msgid "Plugin version"
+msgstr "Pluginversie"
+
+#: src/Admin/SettingsPage.php:244
+msgid "Protocol version"
+msgstr "Protocolversie"
+
+#: src/Admin/SettingsPage.php:245
+msgid "Yoast SEO"
+msgstr "Yoast SEO"
+
+#: src/Admin/SettingsPage.php:249
+msgid "Connection"
+msgstr "Koppeling"
+
+#: src/Admin/SettingsPage.php:249
+msgid "Connected"
+msgstr "Gekoppeld"
+
+#: src/Admin/SettingsPage.php:264
+#: src/Admin/Strings.php:50
+#: src/Admin/Wizard.php:326
+msgid "AI Optimizer add-on required in Fluxis"
+msgstr "AI Optimizer-add-on vereist in Fluxis"
+
+#: src/Admin/SettingsPage.php:265
+msgid "Activate the AI Optimizer add-on in Fluxis to optimize product texts and images from WooCommerce."
+msgstr "Activeer de AI Optimizer-add-on in Fluxis om productteksten en -afbeeldingen vanuit WooCommerce te optimaliseren."
+
+#: src/Admin/SettingsPage.php:272
+#: src/Admin/SetupGate.php:130
+msgid "Refresh status"
+msgstr "Status vernieuwen"
+
+#: src/Admin/SettingsPage.php:333
+msgid "Sync products to Fluxis"
+msgstr "Producten naar Fluxis synchroniseren"
+
+#: src/Admin/SettingsPage.php:347
+msgid "Sync all products to Fluxis"
+msgstr "Alle producten naar Fluxis synchroniseren"
+
+#: src/Admin/SettingsPage.php:371
+msgid "Connect to Fluxis"
+msgstr "Koppelen met Fluxis"
+
+#: src/Admin/SettingsPage.php:378
+msgid "In Fluxis, add the WooCommerce integration. The setup wizard shows your Fluxis address and a one-time pairing code (valid for 10 minutes). Enter both below."
+msgstr "Voeg in Fluxis de WooCommerce-integratie toe. De installatiewizard toont je Fluxis-adres en een eenmalige koppelcode (10 minuten geldig). Vul beide hieronder in."
+
+#: src/Admin/SettingsPage.php:383
+msgid "Fluxis address"
+msgstr "Fluxis-adres"
+
+#: src/Admin/SettingsPage.php:385
+msgid "Pairing code"
+msgstr "Koppelcode"
+
+#: src/Admin/SettingsPage.php:387
+msgid "Dashes and lowercase letters are fine."
+msgstr "Streepjes en kleine letters zijn geen probleem."
+
+#: src/Admin/SettingsPage.php:389
+msgid "Connect"
+msgstr "Koppelen"
+
+#: src/Admin/SettingsPage.php:396
+#: src/Admin/SettingsPage.php:401
+msgid "Disconnect"
+msgstr "Ontkoppelen"
+
+#: src/Admin/SettingsPage.php:397
+msgid "Removes the connection from this store and from Fluxis. Product data is not deleted."
+msgstr "Verwijdert de koppeling uit deze winkel en uit Fluxis. Productgegevens worden niet verwijderd."
+
+#: src/Admin/SettingsPage.php:413
+msgid "Connected to Fluxis."
+msgstr "Gekoppeld met Fluxis."
+
+#: src/Admin/SettingsPage.php:414
+msgid "Disconnected from Fluxis."
+msgstr "Ontkoppeld van Fluxis."
+
+#: src/Admin/SettingsPage.php:415
+msgid "Sync started. Products are sent to Fluxis in the background."
+msgstr "Synchronisatie gestart. Producten worden op de achtergrond naar Fluxis gestuurd."
+
+#: src/Admin/SettingsPage.php:416
+msgid "Status refreshed."
+msgstr "Status vernieuwd."
+
+#: src/Admin/SettingsPage.php:445
+msgid "Enter a valid Fluxis address, for example https://yourcompany.fluxis.app."
+msgstr "Vul een geldig Fluxis-adres in, bijvoorbeeld https://jouwbedrijf.fluxis.app."
+
+#: src/Admin/SettingsPage.php:446
+msgid "Enter a valid Fluxis address that starts with https://, for example https://yourcompany.fluxis.app."
+msgstr "Vul een geldig Fluxis-adres in dat begint met https://, bijvoorbeeld https://jouwbedrijf.fluxis.app."
+
+#: src/Admin/SettingsPage.php:447
+msgid "The pairing code must contain 24 letters and digits (A–Z, 2–7)."
+msgstr "De koppelcode moet uit 24 letters en cijfers bestaan (A–Z, 2–7)."
+
+#: src/Admin/SettingsPage.php:448
+msgid "The pairing code is invalid, expired or already used. Create a new code in Fluxis and try again."
+msgstr "De koppelcode is ongeldig, verlopen of al gebruikt. Maak een nieuwe code aan in Fluxis en probeer het opnieuw."
+
+#: src/Admin/SettingsPage.php:449
+msgid "Fluxis cannot reach this store. The store must be publicly reachable over https."
+msgstr "Fluxis kan deze winkel niet bereiken. De winkel moet publiek bereikbaar zijn via https."
+
+#: src/Admin/SettingsPage.php:450
+msgid "Too many attempts. Wait a minute and try again."
+msgstr "Te veel pogingen. Wacht een minuut en probeer het opnieuw."
+
+#: src/Admin/SettingsPage.php:451
+msgid "This plugin version is not compatible with your Fluxis environment. Update the plugin."
+msgstr "Deze pluginversie is niet compatibel met je Fluxis-omgeving. Werk de plugin bij."
+
+#: src/Admin/SettingsPage.php:452
+msgid "Could not reach Fluxis. Check the address and try again."
+msgstr "Fluxis is niet bereikbaar. Controleer het adres en probeer het opnieuw."
+
+#: src/Admin/SettingsPage.php:456
+msgid "Connecting to Fluxis failed. Try again or create a new pairing code."
+msgstr "Koppelen met Fluxis is mislukt. Probeer het opnieuw of maak een nieuwe koppelcode aan."
+
+#: src/Admin/SettingsPage.php:463
+msgid "Fluxis no longer accepts this connection. Disconnect and pair again."
+msgstr "Fluxis accepteert deze koppeling niet meer. Ontkoppel en koppel opnieuw."
+
+#: src/Admin/SettingsPage.php:464
+msgid "Could not reach Fluxis to load the status."
+msgstr "Fluxis was niet bereikbaar om de status te laden."
+
+#: src/Admin/SettingsPage.php:465
+msgid "The Fluxis status could not be loaded."
+msgstr "De Fluxis-status kon niet worden geladen."
+
+#: src/Admin/Wizard.php:160
+msgid "Next"
+msgstr "Volgende"
+
+#: src/Admin/Wizard.php:158
+msgid "Back"
+msgstr "Terug"
+
+#: src/Admin/Strings.php:20
+#: src/Admin/Wizard.php:161
+msgid "Start optimization"
+msgstr "Optimalisatie starten"
+
+#: src/Admin/Strings.php:21
+msgid "Cancel run"
+msgstr "Run annuleren"
+
+#: src/Admin/Strings.php:22
+msgid "Cancelling…"
+msgstr "Annuleren…"
+
+#: src/Admin/Strings.php:23
+msgid "Starting…"
+msgstr "Starten…"
+
+#: src/Admin/Strings.php:25
+msgid "Reload"
+msgstr "Herladen"
+
+#. translators: 1: finished items, 2: total items
+#: src/Admin/Strings.php:27
+#, php-format
+msgid "%1$d of %2$d done"
+msgstr "%1$d van %2$d klaar"
+
+#: src/Admin/Strings.php:36
+msgid "Queued"
+msgstr "In de wachtrij"
+
+#: src/Admin/Strings.php:37
+msgid "Running"
+msgstr "Bezig"
+
+#: src/Admin/Strings.php:38
+msgid "Completed"
+msgstr "Voltooid"
+
+#: src/Admin/Strings.php:39
+msgid "Failed"
+msgstr "Mislukt"
+
+#: src/Admin/Strings.php:40
+msgid "Cancelled"
+msgstr "Geannuleerd"
+
+#: src/Admin/Strings.php:41
+msgid "Pending"
+msgstr "Wachtend"
+
+#: src/Admin/Strings.php:42
+msgid "Delivered"
+msgstr "Geleverd"
+
+#: src/Admin/Strings.php:32
+msgid "SKU"
+msgstr "SKU"
+
+#: src/Admin/Strings.php:33
+msgid "Field"
+msgstr "Veld"
+
+#: src/Admin/ProductMetaBox.php:173
+#: src/Admin/Strings.php:34
+msgid "Status"
+msgstr "Status"
+
+#: src/Admin/Strings.php:35
+msgid "Error"
+msgstr "Fout"
+
+#. translators: %s: error code
+#: src/Admin/Strings.php:48
+#, php-format
+msgid "Something went wrong (%s). Please try again."
+msgstr "Er ging iets mis (%s). Probeer het opnieuw."
+
+#: src/Admin/Strings.php:49
+msgid "Could not reach your WordPress site. Check your connection and try again."
+msgstr "Je WordPress-site is niet bereikbaar. Controleer je verbinding en probeer het opnieuw."
+
+#: src/Admin/Strings.php:51
+#: src/Admin/Wizard.php:327
+msgid "Optimizing texts and images uses the AI Optimizer add-on. Activate it in Fluxis and try again."
+msgstr "Voor het optimaliseren van teksten en afbeeldingen is de AI Optimizer-add-on nodig. Activeer deze in Fluxis en probeer het opnieuw."
+
+#: src/Admin/Strings.php:57
+msgid "AI budget used up"
+msgstr "AI-budget op"
+
+#. translators: 1: remaining budget, 2: date/time the budget resets
+#: src/Admin/Strings.php:59
+#, php-format
+msgid "Your Fluxis AI budget for this period is used up (remaining: %1$s). It resets on %2$s."
+msgstr "Je Fluxis AI-budget voor deze periode is op (resterend: %1$s). Het wordt opnieuw ingesteld op %2$s."
+
+#: src/Admin/Strings.php:60
+msgid "unknown"
+msgstr "onbekend"
+
+#: src/Admin/Strings.php:61
+msgid "Fluxis rejected the request. Check your choices and try again."
+msgstr "Fluxis heeft het verzoek geweigerd. Controleer je keuzes en probeer het opnieuw."
+
+#: src/Admin/Strings.php:62
+msgid "Select at least one field to optimize."
+msgstr "Kies minstens één veld om te optimaliseren."
+
+#: src/Admin/Strings.php:63
+msgid "Enter an instruction."
+msgstr "Vul een instructie in."
+
+#: src/Admin/Strings.php:65
+msgid "Enter a prompt for the custom edit."
+msgstr "Vul een prompt in voor de aangepaste bewerking."
+
+#: src/Admin/Strings.php:75
+msgid "Updated by Fluxis — reload to see changes."
+msgstr "Bijgewerkt door Fluxis — herlaad om de wijzigingen te zien."
+
+#: src/Admin/Strings.php:76
+msgid "Sync queued. Fluxis receives the product within a minute."
+msgstr "Synchronisatie ingepland. Fluxis ontvangt het product binnen een minuut."
+
+#: src/Sync/ProgressText.php:34
+msgid "Sync finished."
+msgstr "Synchronisatie voltooid."
+
+#: src/Admin/Strings.php:167
+msgid "Disconnect this store from Fluxis? Fluxis can no longer update products until you pair again."
+msgstr "Deze winkel ontkoppelen van Fluxis? Fluxis kan dan geen producten meer bijwerken totdat je opnieuw koppelt."
+
+#: src/Admin/Strings.php:177
+msgid "Remove background"
+msgstr "Achtergrond verwijderen"
+
+#: src/Admin/Strings.php:177
+msgid "Transparent background, product only."
+msgstr "Transparante achtergrond, alleen het product."
+
+#: src/Admin/Strings.php:178
+msgid "White background"
+msgstr "Witte achtergrond"
+
+#: src/Admin/Strings.php:178
+msgid "Clean pure-white studio background."
+msgstr "Strakke, helderwitte studioachtergrond."
+
+#: src/Admin/Strings.php:179
+msgid "Grey background"
+msgstr "Grijze achtergrond"
+
+#: src/Admin/Strings.php:179
+msgid "Neutral light-grey studio background."
+msgstr "Neutrale lichtgrijze studioachtergrond."
+
+#: src/Admin/Strings.php:180
+msgid "Lifestyle"
+msgstr "Lifestyle"
+
+#: src/Admin/Strings.php:180
+msgid "Places the product in a realistic setting."
+msgstr "Plaatst het product in een realistische omgeving."
+
+#: src/Admin/Strings.php:181
+msgid "Enhance"
+msgstr "Verbeteren"
+
+#: src/Admin/Strings.php:181
+msgid "Improves light, sharpness and colour."
+msgstr "Verbetert licht, scherpte en kleur."
+
+#: src/Admin/Strings.php:182
+msgid "Square"
+msgstr "Vierkant"
+
+#: src/Admin/Strings.php:182
+msgid "Square crop with the product centred."
+msgstr "Vierkante uitsnede met het product in het midden."
+
+#: src/Admin/Strings.php:183
+msgid "Remove text"
+msgstr "Tekst verwijderen"
+
+#: src/Admin/Strings.php:183
+msgid "Removes overlaid text, logos and watermarks."
+msgstr "Verwijdert tekst, logo's en watermerken over de afbeelding."
+
+#: src/Admin/Strings.php:184
+msgid "Catalogue style"
+msgstr "Catalogusstijl"
+
+#: src/Admin/Strings.php:184
+msgid "Consistent catalogue look: centred, even light, soft shadow."
+msgstr "Consistente catalogus-look: gecentreerd, gelijkmatig licht, zachte schaduw."
+
+#: src/Admin/Strings.php:185
+msgid "Custom"
+msgstr "Aangepast"
+
+#: src/Admin/Strings.php:185
+msgid "Describe the edit yourself."
+msgstr "Beschrijf de bewerking zelf."
+
+#: src/Admin/Strings.php:195
+msgid "Product name"
+msgstr "Productnaam"
+
+#: src/Admin/Strings.php:139
+#: src/Admin/Strings.php:196
+msgid "Description"
+msgstr "Beschrijving"
+
+#: src/Admin/Strings.php:197
+msgid "Short description"
+msgstr "Korte beschrijving"
+
+#: src/Admin/Strings.php:202
+msgid "Yoast SEO title"
+msgstr "Yoast SEO-titel"
+
+#: src/Admin/Strings.php:203
+msgid "Yoast meta description"
+msgstr "Yoast metabeschrijving"
+
+#: src/Admin/Strings.php:204
+msgid "Yoast focus keyphrase"
+msgstr "Yoast focuskeyphrase"
+
+#: src/Support/Languages.php:48
+msgid "Automatic (same as the product)"
+msgstr "Automatisch (zelfde als het product)"
+
+#: src/Admin/Wizard.php:57
+#: src/Admin/Wizard.php:58
+msgid "Fluxis AI Optimizer"
+msgstr "Fluxis AI Optimizer"
+
+#: src/Admin/Wizard.php:152
+msgid "Start"
+msgstr "Starten"
+
+#: src/Admin/Wizard.php:153
+msgid "Fluxis imports the selected products, optimizes them and writes the results back to WooCommerce automatically. You can leave this page; the run continues in Fluxis."
+msgstr "Fluxis importeert de geselecteerde producten, optimaliseert ze en schrijft de resultaten automatisch terug naar WooCommerce. Je kunt deze pagina verlaten; de run gaat door in Fluxis."
+
+#: src/Admin/Wizard.php:170
+msgid "Products"
+msgstr "Producten"
+
+#: src/Admin/Strings.php:153
+#: src/Admin/Wizard.php:171
+msgid "Options"
+msgstr "Opties"
+
+#. translators: %d: number of products
+#: src/Admin/Wizard.php:192
+#, php-format
+msgid "%d product selected"
+msgid_plural "%d products selected"
+msgstr[0] "%d product geselecteerd"
+msgstr[1] "%d producten geselecteerd"
+
+#. translators: %d: maximum number of products per run
+#: src/Admin/Wizard.php:199
+#, php-format
+msgid "A run can contain at most %d products. Go back and select fewer products."
+msgstr "Een run kan maximaal %d producten bevatten. Ga terug en selecteer minder producten."
+
+#: src/Admin/Wizard.php:205
+msgid "No products with a SKU were selected."
+msgstr "Er zijn geen producten met een SKU geselecteerd."
+
+#. translators: %d: number of further products
+#: src/Admin/Wizard.php:215
+#, php-format
+msgid "and %d more"
+msgstr "en nog %d"
+
+#. translators: %d: number of products without SKU
+#: src/Admin/Wizard.php:224
+#, php-format
+msgid "%d product is skipped because it has no SKU:"
+msgid_plural "%d products are skipped because they have no SKU:"
+msgstr[0] "%d product wordt overgeslagen omdat het geen SKU heeft:"
+msgstr[1] "%d producten worden overgeslagen omdat ze geen SKU hebben:"
+
+#: src/Admin/Strings.php:108
+#: src/Admin/Wizard.php:242
+msgid "Fields to optimize"
+msgstr "Te optimaliseren velden"
+
+#: src/Admin/Wizard.php:254
+msgid "Custom fields (Fluxis field keys, e.g. material_care):"
+msgstr "Eigen velden (Fluxis-veldsleutels, bijv. material_care):"
+
+#: src/Admin/Wizard.php:256
+msgid "Add custom field"
+msgstr "Eigen veld toevoegen"
+
+#: src/Admin/Wizard.php:262
+msgid "How"
+msgstr "Hoe"
+
+#: src/Admin/Wizard.php:263
+msgid "Improve based on the existing product data"
+msgstr "Verbeteren op basis van de bestaande productgegevens"
+
+#: src/Admin/Wizard.php:264
+msgid "Follow my instruction"
+msgstr "Mijn instructie volgen"
+
+#: src/Admin/Strings.php:96
+#: src/Admin/Wizard.php:268
+msgid "For example: write in a playful tone and mention free shipping."
+msgstr "Bijvoorbeeld: schrijf in een speelse toon en noem gratis verzending."
+
+#: src/Admin/Strings.php:97
+#: src/Admin/Wizard.php:272
+msgid "Language"
+msgstr "Taal"
+
+#: src/Admin/Wizard.php:276
+msgid "Existing content"
+msgstr "Bestaande inhoud"
+
+#: src/Admin/Wizard.php:277
+msgid "Only fill empty fields"
+msgstr "Alleen lege velden vullen"
+
+#: src/Admin/Strings.php:107
+#: src/Admin/Wizard.php:278
+msgid "Overwrite existing content"
+msgstr "Bestaande inhoud overschrijven"
+
+#: src/Admin/Strings.php:101
+#: src/Admin/Wizard.php:287
+msgid "Edit"
+msgstr "Bewerking"
+
+#: src/Admin/Strings.php:103
+#: src/Admin/Wizard.php:305
+msgid "Describe the edit, e.g. place the product on a marble kitchen counter."
+msgstr "Beschrijf de bewerking, bijv. zet het product op een marmeren aanrecht."
+
+#: src/Admin/Wizard.php:310
+msgid "Which images"
+msgstr "Welke afbeeldingen"
+
+#: src/Admin/Wizard.php:311
+msgid "Main image only"
+msgstr "Alleen de hoofdafbeelding"
+
+#: src/Admin/Wizard.php:312
+msgid "All images (main image and gallery)"
+msgstr "Alle afbeeldingen (hoofdafbeelding en galerij)"
+
+#: src/Admin/Wizard.php:316
+msgid "Result"
+msgstr "Resultaat"
+
+#: src/Admin/Wizard.php:317
+msgid "Add as a new image (keep the original)"
+msgstr "Toevoegen als nieuwe afbeelding (origineel behouden)"
+
+#: src/Admin/Wizard.php:318
+msgid "Replace the original image"
+msgstr "De originele afbeelding vervangen"
+
+#: src/Plugin.php:115
+msgid "Fluxis for WooCommerce requires WooCommerce to be installed and active."
+msgstr "Fluxis voor WooCommerce vereist dat WooCommerce geïnstalleerd en actief is."
+
+#: src/Plugin.php:127
+msgid "Fluxis for WooCommerce: the PHP sodium extension is missing, so the connection secret is stored without encryption. Ask your host to enable sodium."
+msgstr "Fluxis voor WooCommerce: de PHP-extensie sodium ontbreekt, waardoor het koppelingsgeheim zonder versleuteling wordt opgeslagen. Vraag je host om sodium in te schakelen."
+
+#: src/Admin/SettingsPage.php:455
+msgid "This site has no authentication keys and salts (AUTH_KEY, SECURE_AUTH_KEY), so the connection secret cannot be stored securely. Add them to wp-config.php before connecting."
+msgstr "Deze site heeft geen authenticatiesleutels en salts (AUTH_KEY, SECURE_AUTH_KEY), dus het verbindingsgeheim kan niet veilig worden opgeslagen. Voeg ze toe aan wp-config.php voordat je verbindt."
+
+#. translators: %d: number of finished items that WooCommerce has received or that needed no change
+#: src/Admin/Strings.php:29
+#, php-format
+msgid "%d handled in WooCommerce"
+msgstr "%d verwerkt in WooCommerce"
+
+#. translators: %d: number of failed, cancelled or reverted items
+#: src/Admin/Strings.php:31
+#, php-format
+msgid "%d failed or cancelled"
+msgstr "%d mislukt of geannuleerd"
+
+#: src/Admin/Strings.php:43
+msgid "Proposed"
+msgstr "Voorgesteld"
+
+#: src/Admin/Strings.php:44
+msgid "Applied"
+msgstr "Toegepast"
+
+#: src/Admin/Strings.php:45
+msgid "Nothing to change"
+msgstr "Niets te wijzigen"
+
+#: src/Admin/Strings.php:46
+msgid "Reverted"
+msgstr "Teruggedraaid"
+
+#: src/Admin/Strings.php:67
+msgid "This kind of optimization is not available in Fluxis yet."
+msgstr "Dit soort optimalisatie is nog niet beschikbaar in Fluxis."
+
+#: src/Admin/Strings.php:68
+msgid "Fluxis is still importing these products. Wait a moment and try again."
+msgstr "Fluxis is deze producten nog aan het importeren. Wacht even en probeer het opnieuw."
+
+#: src/Plugin.php:139
+msgid "Fluxis for WooCommerce: this site has no authentication keys and salts, so connecting to Fluxis is disabled. Add AUTH_KEY and SECURE_AUTH_KEY to wp-config.php."
+msgstr "Fluxis voor WooCommerce: deze site heeft geen authenticatiesleutels en salts, dus verbinden met Fluxis is uitgeschakeld. Voeg AUTH_KEY en SECURE_AUTH_KEY toe aan wp-config.php."
+
+#: src/Admin/Strings.php:69
+msgid "Fluxis is importing the product images first…"
+msgstr "Fluxis importeert eerst de productafbeeldingen…"
+
+#: src/Admin/Strings.php:70
+msgid "Fluxis is importing the products first…"
+msgstr "Fluxis importeert eerst de producten…"
+
+#: src/Admin/Strings.php:71
+msgid "Fluxis is busy. Trying again in a moment…"
+msgstr "Fluxis is druk bezig. Over een moment proberen we het opnieuw…"
+
+#: src/Admin/Strings.php:72
+msgid "Fluxis is receiving too many requests right now. Wait a moment and try again."
+msgstr "Fluxis ontvangt op dit moment te veel verzoeken. Wacht even en probeer het opnieuw."
+
+#: src/Admin/Strings.php:73
+msgid "Fluxis refused the request because it is too large. Select fewer products and try again."
+msgstr "Fluxis heeft het verzoek geweigerd omdat het te groot is. Selecteer minder producten en probeer het opnieuw."
+
+#: src/Admin/Strings.php:74
+msgid "The selected products are too large to send to Fluxis in one run (more than 7.5 MB, mostly long descriptions). Select fewer products and try again."
+msgstr "De geselecteerde producten zijn te groot om in één run naar Fluxis te sturen (meer dan 7,5 MB, meestal door lange beschrijvingen). Selecteer minder producten en probeer het opnieuw."
+
+#. translators: %d: number of products Fluxis refused as too large
+#: src/Sync/ProgressText.php:76
+#, php-format
+msgid "%d too large for Fluxis (see the \"fluxis\" log under WooCommerce → Status → Logs)."
+msgstr "%d te groot voor Fluxis (zie het logboek \"fluxis\" onder WooCommerce → Status → Logs)."
+
+#: src/Admin/ProductMetaBox.php:153
+#: src/Admin/Strings.php:82
+msgid "Optimize product"
+msgstr "Product optimaliseren"
+
+#: src/Admin/ProductMetaBox.php:156
+#: src/Admin/Strings.php:81
+msgid "Optimize images"
+msgstr "Afbeeldingen optimaliseren"
+
+#: src/Admin/ProductMetaBox.php:167
+msgid "No SKU"
+msgstr "Geen SKU"
+
+#: src/Admin/ProductMetaBox.php:168
+msgid "Linked"
+msgstr "Gekoppeld"
+
+#: src/Admin/ProductMetaBox.php:169
+msgid "Not linked"
+msgstr "Niet gekoppeld"
+
+#: src/Admin/ProductMetaBox.php:174
+msgid "Sent to Fluxis"
+msgstr "Naar Fluxis gestuurd"
+
+#: src/Admin/ProductMetaBox.php:175
+msgid "Updated by Fluxis"
+msgstr "Bijgewerkt door Fluxis"
+
+#: src/Admin/ProductMetaBox.php:193
+msgid "Add a SKU and save the product to sync it. The SKU links the product between WooCommerce and Fluxis. You can still optimize texts and images here."
+msgstr "Voeg een SKU toe en sla het product op om het te synchroniseren. De SKU koppelt het product tussen WooCommerce en Fluxis. Teksten en afbeeldingen optimaliseren kan hier wel."
+
+#: src/Admin/ProductMetaBox.php:231
+msgid "Never"
+msgstr "Nooit"
+
+#. translators: %s: time of day
+#: src/Admin/ProductMetaBox.php:240
+#, php-format
+msgid "today %s"
+msgstr "vandaag %s"
+
+#. translators: %s: time of day
+#: src/Admin/ProductMetaBox.php:242
+#, php-format
+msgid "yesterday %s"
+msgstr "gisteren %s"
+
+#: src/Admin/ProductMetaBox.php:243
+msgid "M j, Y"
+msgstr "j M Y"
+
+#: src/Admin/ProductMetaBox.php:286
+msgid "sent"
+msgstr "verstuurd"
+
+#: src/Admin/ProductMetaBox.php:287
+msgid "skipped (no SKU)"
+msgstr "overgeslagen (geen SKU)"
+
+#. translators: %s: error code
+#: src/Admin/ProductMetaBox.php:292
+#, php-format
+msgid "failed (%s)"
+msgstr "mislukt (%s)"
+
+#: src/Admin/ProductScreen.php:66
+#: src/Admin/ProductScreen.php:68
+#: src/Admin/Strings.php:77
+msgid "Optimize with Fluxis AI"
+msgstr "Optimaliseren met Fluxis AI"
+
+#: src/Admin/ProductScreen.php:86
+msgid "Improve this image with AI."
+msgstr "Verbeter deze afbeelding met AI."
+
+#: src/Admin/ProductScreen.php:88
+#: src/Admin/Strings.php:80
+msgid "Optimize image"
+msgstr "Afbeelding optimaliseren"
+
+#: src/Admin/SettingsPage.php:334
+msgid "Sends every product (including variations, in every status except trash) to Fluxis. Products without a SKU are skipped because the SKU links products between WooCommerce and Fluxis. Existing data in Fluxis is overwritten."
+msgstr "Stuurt elk product (inclusief variaties, in elke status behalve prullenbak) naar Fluxis. Producten zonder SKU worden overgeslagen, omdat de SKU producten koppelt tussen WooCommerce en Fluxis. Bestaande gegevens in Fluxis worden overschreven."
+
+#: src/Admin/Strings.php:64
+msgid "Enter a two-letter ISO 639-1 language code, for example pt."
+msgstr "Vul een taalcode van twee letters in (ISO 639-1), bijvoorbeeld pt."
+
+#: src/Admin/Strings.php:79
+msgid "Optimize image with Fluxis AI"
+msgstr "Afbeelding optimaliseren met Fluxis AI"
+
+#: src/Admin/Strings.php:83
+msgid "Optimize texts"
+msgstr "Teksten optimaliseren"
+
+#: src/Admin/Strings.php:84
+msgid "Accept"
+msgstr "Overnemen"
+
+#: src/Admin/Strings.php:85
+msgid "Accept all"
+msgstr "Alles overnemen"
+
+#: src/Admin/Strings.php:86
+msgid "Accepted"
+msgstr "Overgenomen"
+
+#: src/Admin/Strings.php:87
+msgid "Accept and replace"
+msgstr "Overnemen en vervangen"
+
+#: src/Admin/Strings.php:88
+msgid "Accept and add to gallery"
+msgstr "Overnemen en aan galerij toevoegen"
+
+#: src/Admin/Strings.php:89
+msgid "Current"
+msgstr "Huidig"
+
+#: src/Admin/Strings.php:90
+msgid "Proposal"
+msgstr "Voorstel"
+
+#: src/Admin/Strings.php:91
+msgid "Generate"
+msgstr "Genereren"
+
+#: src/Admin/Strings.php:92
+msgid "Fluxis AI is writing…"
+msgstr "Fluxis AI schrijft…"
+
+#: src/Admin/Strings.php:93
+msgid "Fluxis AI is editing the image…"
+msgstr "Fluxis AI bewerkt de afbeelding…"
+
+#: src/Admin/Strings.php:94
+msgid "Saving…"
+msgstr "Opslaan…"
+
+#: src/Admin/Strings.php:95
+msgid "Instruction"
+msgstr "Instructie"
+
+#: src/Admin/Strings.php:98
+#: src/Support/Languages.php:155
+msgid "Other (ISO code)"
+msgstr "Andere (ISO-code)"
+
+#: src/Admin/Strings.php:99
+#: src/Support/Languages.php:160
+msgid "Two-letter ISO 639-1 language code"
+msgstr "Taalcode van twee letters (ISO 639-1)"
+
+#: src/Admin/Strings.php:100
+#: src/Support/Languages.php:159
+msgid "e.g. pt"
+msgstr "bijv. pt"
+
+#: src/Admin/Strings.php:102
+msgid "Prompt"
+msgstr "Prompt"
+
+#: src/Admin/Strings.php:104
+msgid "Apply as"
+msgstr "Toepassen als"
+
+#: src/Admin/Strings.php:105
+msgid "Replace in place"
+msgstr "Op dezelfde plek vervangen"
+
+#: src/Admin/Strings.php:106
+msgid "Add to gallery"
+msgstr "Aan galerij toevoegen"
+
+#: src/Admin/Strings.php:109
+msgid "Fluxis optimizes these fields and writes them back to this product."
+msgstr "Fluxis optimaliseert deze velden en schrijft ze terug naar dit product."
+
+#: src/Admin/Strings.php:110
+msgid "This product has no SKU, so the proposals are shown here first and saved when you click Update."
+msgstr "Dit product heeft geen SKU, dus de voorstellen verschijnen eerst hier en worden opgeslagen als je op Bijwerken klikt."
+
+#: src/Admin/Strings.php:111
+msgid "These fields only exist in WooCommerce: you review the proposals before anything changes."
+msgstr "Deze velden bestaan alleen in WooCommerce: je beoordeelt de voorstellen voordat er iets verandert."
+
+#: src/Admin/Strings.php:112
+msgid "Other text fields of this product"
+msgstr "Andere tekstvelden van dit product"
+
+#: src/Admin/Strings.php:113
+msgid "This product has no other text fields."
+msgstr "Dit product heeft geen andere tekstvelden."
+
+#: src/Admin/Strings.php:114
+msgid "Loading fields…"
+msgstr "Velden laden…"
+
+#: src/Admin/Strings.php:116
+msgid "Every image used by this product. Select the images to optimize; each result is shown for review before anything changes. The original images are always kept."
+msgstr "Alle afbeeldingen die dit product gebruikt. Kies de afbeeldingen om te optimaliseren; elk resultaat wordt eerst getoond voordat er iets verandert. De originele afbeeldingen blijven altijd bewaard."
+
+#: src/Admin/Strings.php:117
+msgid "Loading images…"
+msgstr "Afbeeldingen laden…"
+
+#: src/Admin/Strings.php:119
+msgid "Select image"
+msgstr "Afbeelding kiezen"
+
+#: src/Admin/Strings.php:120
+msgid "Synced fields (via Fluxis)"
+msgstr "Gesynchroniseerde velden (via Fluxis)"
+
+#: src/Admin/Strings.php:121
+msgid "Fluxis is optimizing the fields and writes them back to WooCommerce."
+msgstr "Fluxis optimaliseert de velden en schrijft ze terug naar WooCommerce."
+
+#: src/Admin/Strings.php:122
+msgid "Proposals"
+msgstr "Voorstellen"
+
+#: src/Admin/Strings.php:123
+msgid "Saved when you click Update."
+msgstr "Wordt opgeslagen als je op Bijwerken klikt."
+
+#: src/Admin/Strings.php:125
+msgid "Fluxis AI had no proposal for these fields. Try an instruction."
+msgstr "Fluxis AI had geen voorstel voor deze velden. Probeer een instructie."
+
+#: src/Admin/Strings.php:126
+msgid "This image is larger than 5 MB, which Fluxis cannot fetch. Use a smaller image."
+msgstr "Deze afbeelding is groter dan 5 MB en kan niet door Fluxis worden opgehaald. Gebruik een kleinere afbeelding."
+
+#: src/Admin/Strings.php:127
+msgid "The image no longer exists."
+msgstr "De afbeelding bestaat niet meer."
+
+#: src/Admin/Strings.php:128
+msgid "Fluxis AI is taking longer than expected. Try again in a moment."
+msgstr "Fluxis AI doet er langer over dan verwacht. Probeer het zo opnieuw."
+
+#: src/Admin/Strings.php:129
+msgid "Select at most 20 fields."
+msgstr "Kies maximaal 20 velden."
+
+#: src/Admin/Strings.php:130
+msgid "Attribute values"
+msgstr "Eigenschapswaarden"
+
+#: src/Admin/Strings.php:131
+#: src/Products/FieldDiscovery.php:79
+msgid "Attribute values separated by \" | \"; keep the number of values"
+msgstr "Eigenschapswaarden gescheiden door \" | \"; houd het aantal waarden gelijk"
+
+#: src/Admin/Strings.php:132
+msgid "Delete"
+msgstr "Verwijderen"
+
+#: src/Admin/Strings.php:133
+msgid "Sent to Fluxis."
+msgstr "Naar Fluxis gestuurd."
+
+#: src/Admin/Strings.php:134
+msgid "Sync failed:"
+msgstr "Synchronisatie mislukt:"
+
+#: src/Admin/Strings.php:135
+msgid "The sync is still queued; the status updates when it ran."
+msgstr "De synchronisatie staat nog in de wachtrij; de status wordt bijgewerkt zodra die is uitgevoerd."
+
+#: src/Admin/Strings.php:136
+msgid "Alternative text"
+msgstr "Alternatieve tekst"
+
+#: src/Admin/Strings.php:137
+msgid "Title"
+msgstr "Titel"
+
+#: src/Admin/Strings.php:138
+msgid "Caption"
+msgstr "Bijschrift"
+
+#: src/Admin/Strings.php:140
+msgid "Improve"
+msgstr "Verbeteren"
+
+#: src/Admin/Strings.php:141
+msgid "Add an instruction (optional)"
+msgstr "Instructie toevoegen (optioneel)"
+
+#: src/Admin/Strings.php:142
+msgid "Remove the instruction"
+msgstr "Instructie verwijderen"
+
+#: src/Admin/Strings.php:143
+msgid "With your instruction"
+msgstr "Met jouw instructie"
+
+#: src/Admin/Strings.php:144
+msgid "Fluxis AI improves the text based on the product data."
+msgstr "Fluxis AI verbetert de tekst op basis van de productgegevens."
+
+#: src/Admin/Strings.php:145
+msgid "Change"
+msgstr "Wijzigen"
+
+#: src/Admin/Strings.php:146
+msgid "Tip: Ctrl/⌘ + Enter generates."
+msgstr "Tip: Ctrl/⌘ + Enter genereert."
+
+#: src/Admin/Strings.php:147
+msgid "Try again"
+msgstr "Opnieuw proberen"
+
+#: src/Admin/Strings.php:148
+msgid "Suggestion"
+msgstr "Suggestie"
+
+#. translators: %d: number of characters
+#: src/Admin/Strings.php:150
+#, php-format
+msgid "%d characters"
+msgstr "%d tekens"
+
+#: src/Admin/Strings.php:151
+msgid "Discard"
+msgstr "Negeren"
+
+#: src/Admin/Strings.php:152
+msgid "Texts"
+msgstr "Teksten"
+
+#: src/Admin/Strings.php:154
+msgid "Add more fields"
+msgstr "Meer velden toevoegen"
+
+#: src/Admin/Strings.php:155
+msgid "Add images"
+msgstr "Afbeeldingen toevoegen"
+
+#: src/Admin/Strings.php:156
+msgid "Optimize the product images too. The originals are always kept."
+msgstr "Optimaliseer ook de productafbeeldingen. De originelen blijven altijd bewaard."
+
+#: src/Admin/Strings.php:157
+msgid "Cancel"
+msgstr "Annuleren"
+
+#. translators: 1: number of selected text fields, 2: number of selected images
+#: src/Admin/Strings.php:159
+#, php-format
+msgid "%1$d texts · %2$d images selected"
+msgstr "%1$d teksten · %2$d afbeeldingen gekozen"
+
+#. translators: %d: number of selected images
+#: src/Admin/Strings.php:161
+#, php-format
+msgid "%d images selected"
+msgstr "%d afbeeldingen gekozen"
+
+#: src/Admin/Strings.php:162
+msgid "Results"
+msgstr "Resultaten"
+
+#: src/Admin/Strings.php:163
+msgid "Review each result. Nothing changes until you accept it."
+msgstr "Bekijk elk resultaat. Er verandert niets totdat je het overneemt."
+
+#: src/Admin/Strings.php:164
+msgid "Review the proposals and accept what you like."
+msgstr "Bekijk de voorstellen en neem over wat je goed vindt."
+
+#: src/Admin/Strings.php:166
+msgid "Improve this image or its texts with AI."
+msgstr "Verbeter deze afbeelding of de teksten ervan met AI."
+
+#: src/Products/FieldDiscovery.php:61
+msgid "Button text"
+msgstr "Knoptekst"
+
+#: src/Products/FieldDiscovery.php:61
+msgid "Call to action on the external product button"
+msgstr "Call-to-action op de knop van het externe product"
+
+#: src/Products/FieldDiscovery.php:65
+msgid "Purchase note"
+msgstr "Aankoopnotitie"
+
+#: src/Products/FieldDiscovery.php:65
+msgid "Note sent to the customer after purchase"
+msgstr "Notitie die de klant na aankoop ontvangt"
+
+#. translators: %s: attribute name, e.g. Material
+#: src/Products/FieldDiscovery.php:75
+#, php-format
+msgid "Attribute: %s"
+msgstr "Eigenschap: %s"
+
+#. translators: %s: product meta key
+#. translators: %s: product meta key, e.g. hero_image
+#: src/Products/FieldDiscovery.php:90
+#: src/Products/ImageDiscovery.php:67
+#, php-format
+msgid "Meta: %s"
+msgstr "Meta: %s"
+
+#: src/Products/ImageDiscovery.php:41
+msgid "Featured"
+msgstr "Uitgelicht"
+
+#. translators: %d: position of the image in the product gallery (1-based)
+#: src/Products/ImageDiscovery.php:47
+#, php-format
+msgid "Gallery #%d"
+msgstr "Galerij #%d"
+
+#. translators: %s: variation attributes, e.g. "Blue, Large"
+#: src/Products/ImageDiscovery.php:59
+#, php-format
+msgid "Variation: %s"
+msgstr "Variatie: %s"
+
+#. translators: %s: language name and code, e.g. "Nederlands (nl)"
+#: src/Support/Languages.php:53
+#, php-format
+msgid "%s — site language"
+msgstr "%s — taal van de site"
+
+#. translators: 1: what started the sync (e.g. "Sync all"), 2: date and time it started
+#: src/Sync/ProgressText.php:25
+#, php-format
+msgid "%1$s — started %2$s"
+msgstr "%1$s — gestart %2$s"
+
+#. translators: %s: date and time the sync finished
+#: src/Sync/ProgressText.php:33
+#, php-format
+msgid "Sync finished %s."
+msgstr "Synchronisatie klaar %s."
+
+#: src/Sync/ProgressText.php:35
+msgid "Sync running…"
+msgstr "Synchronisatie loopt…"
+
+#: src/Sync/ProgressText.php:42
+msgid "Sync all"
+msgstr "Alles synchroniseren"
+
+#. translators: %d: number of products selected in the bulk action
+#: src/Sync/ProgressText.php:44
+#, php-format
+msgid "Bulk action (%d product)"
+msgid_plural "Bulk action (%d products)"
+msgstr[0] "Bulkactie (%d product)"
+msgstr[1] "Bulkactie (%d producten)"
+
+#: src/Sync/ProgressText.php:45
+msgid "Single product"
+msgstr "Eén product"
+
+#: src/Sync/ProgressText.php:46
+msgid "Earlier sync"
+msgstr "Eerdere synchronisatie"
+
+#. translators: %d: number of products
+#: src/Sync/ProgressText.php:56
+#, php-format
+msgid "%d product"
+msgid_plural "%d products"
+msgstr[0] "%d product"
+msgstr[1] "%d producten"
+
+#. translators: 1: "19 products", 2: number of variations
+#: src/Sync/ProgressText.php:60
+#, php-format
+msgid "%1$s (%2$d variation)"
+msgid_plural "%1$s (%2$d variations)"
+msgstr[0] "%1$s (%2$d variatie)"
+msgstr[1] "%1$s (%2$d variaties)"
+
+#. translators: 1: "19 products (6 variations)", 2: processed, 3: total, 4: sent, 5: failed, 6: skipped
+#: src/Sync/ProgressText.php:65
+#, php-format
+msgid "%1$s — %2$d of %3$d processed: %4$d sent, %5$d failed, %6$d skipped (no SKU)"
+msgstr "%1$s — %2$d van %3$d verwerkt: %4$d verstuurd, %5$d mislukt, %6$d overgeslagen (geen SKU)"
+
+#: src/Admin/SettingsPage.php:240
+msgid "Setup in Fluxis"
+msgstr "Inrichting in Fluxis"
+
+#: src/Admin/SettingsPage.php:481
+msgid "Complete"
+msgstr "Voltooid"
+
+#: src/Admin/SettingsPage.php:487
+msgid "Not finished"
+msgstr "Niet afgerond"
+
+#. translators: %s: integration status in Fluxis, e.g. draft or paused
+#: src/Admin/SettingsPage.php:489
+#, php-format
+msgid "Not finished (%s)"
+msgstr "Niet afgerond (%s)"
+
+#: src/Admin/SetupGate.php:43
+#: src/Admin/Strings.php:53
+msgid "Finish the Fluxis setup first"
+msgstr "Rond eerst de inrichting in Fluxis af"
+
+#: src/Admin/SetupGate.php:82
+#: src/Admin/Strings.php:55
+msgid "Fluxis is connected, but the setup in Fluxis is not finished yet (connection test, mapping, activation). Finish it in Fluxis, then refresh."
+msgstr "Fluxis is gekoppeld, maar de inrichting in Fluxis is nog niet afgerond (verbindingstest, mapping, activatie). Rond die af in Fluxis en vernieuw daarna."
+
+#: src/Admin/SetupGate.php:101
+msgid "Fluxis status refreshed: the setup is complete and the Fluxis actions are available."
+msgstr "Fluxis-status vernieuwd: de inrichting is afgerond en de Fluxis-acties zijn beschikbaar."
+
+#: src/Admin/SetupGate.php:112
+#: src/Admin/Strings.php:54
+msgid "Fluxis setup not finished."
+msgstr "Inrichting in Fluxis niet afgerond."
+
+#: src/Admin/SetupGate.php:115
+msgid "Status refreshed: the setup in Fluxis is still not finished."
+msgstr "Status vernieuwd: de inrichting in Fluxis is nog steeds niet afgerond."
+
+#: src/Admin/SetupGate.php:123
+#: src/Admin/Strings.php:56
+msgid "Finish the setup in Fluxis"
+msgstr "Inrichting afronden in Fluxis"
+
+#. translators: %s: date and time the status was last loaded from Fluxis
+#: src/Admin/SetupGate.php:135
+#, php-format
+msgid "Last checked: %s"
+msgstr "Laatst gecontroleerd: %s"
+
+#: src/Admin/Ajax.php:397
+msgid "Product image"
+msgstr "Productafbeelding"
+
+#: src/Admin/Ajax.php:397
+#: src/Admin/Strings.php:124
+msgid "Gallery image"
+msgstr "Galerijafbeelding"
+
+#: src/Admin/ProductMetaBox.php:203
+msgid "This product is managed in Fluxis. Changes you make here are not sent automatically."
+msgstr "Dit product wordt beheerd in Fluxis. Wijzigingen die je hier maakt worden niet automatisch verstuurd."
+
+#: src/Admin/ProductMetaBox.php:207
+msgid "Changes you make here are sent to Fluxis automatically."
+msgstr "Wijzigingen die je hier maakt worden automatisch naar Fluxis gestuurd."
+
+#: src/Admin/SettingsPage.php:285
+msgid "Automatic sync"
+msgstr "Automatisch synchroniseren"
+
+#: src/Admin/SettingsPage.php:324
+msgid "Every change you save to a product is sent to Fluxis within a minute."
+msgstr "Elke wijziging die je aan een product opslaat wordt binnen een minuut naar Fluxis gestuurd."
+
+#: src/Admin/SettingsPage.php:325
+msgid "When you publish a new product in WooCommerce, it is added to Fluxis. After that you manage it in Fluxis. Changes you make here are not sent, unless you use Sync to Fluxis."
+msgstr "Als je een nieuw product in WooCommerce publiceert, wordt het aan Fluxis toegevoegd. Daarna beheer je het in Fluxis. Wijzigingen die je hier maakt worden niet verstuurd, tenzij je Synchroniseren naar Fluxis gebruikt."
+
+#: src/Ai/AdhocApply.php:383
+msgid "Image"
+msgstr "Afbeelding"
+
+#: src/Ai/AdhocApply.php:509
+msgid "Saving accepted results in Fluxis…"
+msgstr "Overgenomen resultaten worden in Fluxis opgeslagen…"
+
+#. translators: %s: comma-separated field labels
+#: src/Ai/AdhocApply.php:514
+#, php-format
+msgid "Also saved in Fluxis: %s"
+msgstr "Ook opgeslagen in Fluxis: %s"
+
+#. translators: %s: comma-separated field labels
+#: src/Ai/AdhocApply.php:519
+#, php-format
+msgid "Saved here only: %s"
+msgstr "Alleen hier opgeslagen: %s"
+
+#. translators: %s: error code
+#: src/Ai/AdhocApply.php:524
+#, php-format
+msgid "Not saved in Fluxis (%s)"
+msgstr "Niet opgeslagen in Fluxis (%s)"
+
+#: src/Admin/ProductMetaBox.php:288
+msgid "Not sent: the leading source is Fluxis."
+msgstr "Niet verstuurd: de leidende bron is Fluxis."
+
+#: src/Admin/SettingsPage.php:282
+msgid "Change in Fluxis"
+msgstr "Wijzigen in Fluxis"
+
+#: src/Admin/SettingsPage.php:304
+msgid "Leading source: WooCommerce"
+msgstr "Leidende bron: WooCommerce"
+
+#: src/Admin/SettingsPage.php:305
+msgid "Leading source: Fluxis"
+msgstr "Leidende bron: Fluxis"
+
+#: src/Admin/SettingsPage.php:311
+msgid "Products are managed in this shop and sent to Fluxis."
+msgstr "Producten worden in deze shop beheerd en naar Fluxis gestuurd."
+
+#: src/Admin/SettingsPage.php:312
+msgid "Products are managed in Fluxis and pushed to this shop."
+msgstr "Producten worden in Fluxis beheerd en naar deze shop gestuurd."
+
+#: src/Admin/ProductMetaBox.php:208
+msgid "Automatic import is off in Fluxis. Use Sync to Fluxis to send your changes."
+msgstr "Automatisch importeren staat uit in Fluxis. Gebruik Synchroniseren naar Fluxis om je wijzigingen te versturen."
+
+#: src/Admin/ProductMetaBox.php:289
+msgid "Not sent: automatic import is off in Fluxis."
+msgstr "Niet verstuurd: automatisch importeren staat uit in Fluxis."
+
+#: src/Admin/SettingsPage.php:294
+msgid "Automatic import: On"
+msgstr "Automatisch importeren: Aan"
+
+#: src/Admin/SettingsPage.php:294
+msgid "Automatic import: Off"
+msgstr "Automatisch importeren: Uit"
+
+#: src/Admin/SettingsPage.php:319
+msgid "Changes you save here are not sent to Fluxis. Use Sync to Fluxis to send them."
+msgstr "Wijzigingen die je hier opslaat worden niet naar Fluxis gestuurd. Gebruik Synchroniseren naar Fluxis om ze te versturen."
+
+#: src/Admin/SettingsPage.php:320
+msgid "New products you publish here are not added to Fluxis. Use Sync to Fluxis to add them."
+msgstr "Nieuwe producten die je hier publiceert worden niet aan Fluxis toegevoegd. Gebruik Synchroniseren naar Fluxis om ze toe te voegen."
+
+#: src/Admin/ProductMetaBox.php:290
+msgid "Not sent: deletions are not applied in Fluxis."
+msgstr "Niet verstuurd: verwijderingen worden niet in Fluxis toegepast."
