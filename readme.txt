@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.1
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.0
+Stable tag: 1.0.2
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,12 @@ Yes. The plugin connects your store to a Fluxis workspace. The pairing code is c
 Nothing is deleted from WooCommerce. Pending background deliveries to Fluxis are cancelled, and the connection can be resumed by activating the plugin again.
 
 == Changelog ==
+
+= 1.0.2 =
+* WooCommerce's default category ("Uncategorized") is no longer sent to Fluxis, neither with a product nor in the category tree.
+
+= 1.0.1 =
+* Product categories sync with Fluxis as a tree: products carry each category's parent and path, Fluxis can read the whole category tree, and pushed categories are matched by id or path (missing levels are created, Yoast's primary category is set).
 
 = 1.0.0 =
 * First release.

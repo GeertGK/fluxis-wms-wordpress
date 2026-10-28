@@ -8,6 +8,7 @@ use Fluxis\WooCommerce\Connection\Secrets;
 use Fluxis\WooCommerce\Connection\Verifier;
 use Fluxis\WooCommerce\Plugin;
 use Fluxis\WooCommerce\Products\AttributeCatalog;
+use Fluxis\WooCommerce\Products\CategoryTerms;
 use Fluxis\WooCommerce\Products\Upserter;
 use Fluxis\WooCommerce\Support\Logger;
 
@@ -56,6 +57,12 @@ final class Routes
         register_rest_route(self::NAMESPACE, '/attributes', [
             'methods' => \WP_REST_Server::READABLE,
             'callback' => [$this, 'attributes'],
+            'permission_callback' => [$this, 'permission'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/categories', [
+            'methods' => \WP_REST_Server::READABLE,
+            'callback' => [$this, 'categories'],
             'permission_callback' => [$this, 'permission'],
         ]);
 
@@ -174,6 +181,16 @@ final class Routes
             'protocol' => FLUXIS_WC_PROTOCOL,
             'attributes' => (new AttributeCatalog())->cached(),
         ], 200);
+    }
+
+    /**
+     * GET /categories (protocol §13.1): the whole product_cat tree, flat, parents
+     * before children, at most CategoryTerms::MAX_TREE terms (`truncated` says so),
+     * without WooCommerce's default category.
+     */
+    public function categories(\WP_REST_Request $request): \WP_REST_Response
+    {
+        return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL] + (new CategoryTerms())->tree(), 200);
     }
 
     public function upsert(\WP_REST_Request $request): \WP_REST_Response

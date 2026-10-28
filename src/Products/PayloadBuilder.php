@@ -227,7 +227,11 @@ final class PayloadBuilder
     }
 
     /**
-     * @return list<array{id: int, name: string, slug: string}>
+     * Tags as `{id, name, slug}`; categories (protocol §13) also with `parent` (0 at
+     * the root) and `path`, the names from the root down to the term, and never
+     * WooCommerce's default category ({@see CategoryTerms::isDefault()}).
+     *
+     * @return list<array<string, mixed>>
      */
     private function terms(\WC_Product $product, string $taxonomy): array
     {
@@ -242,9 +246,23 @@ final class PayloadBuilder
         }
 
         $result = [];
+        $categories = $taxonomy === CategoryTerms::TAXONOMY ? new CategoryTerms() : null;
 
         foreach ($terms as $term) {
-            $result[] = ['id' => (int) $term->term_id, 'name' => (string) $term->name, 'slug' => (string) $term->slug];
+            if ($categories !== null && $categories->isDefault((int) $term->term_id)) {
+                continue;
+            }
+
+            $entry = ['id' => (int) $term->term_id, 'name' => (string) $term->name, 'slug' => (string) $term->slug];
+
+            if ($categories !== null) {
+                $parent = (int) ($term->parent ?? 0);
+                $name = html_entity_decode((string) $term->name, ENT_QUOTES | ENT_HTML5, 'UTF-8');
+                $entry['parent'] = $parent;
+                $entry['path'] = $categories->path((int) $term->term_id, $name, $parent);
+            }
+
+            $result[] = $entry;
         }
 
         return $result;

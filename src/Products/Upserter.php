@@ -33,8 +33,19 @@ final class Upserter
     /** @var array<string, string> */
     public const FALLBACK_SEO_META = ['title' => '_fluxis_seo_title', 'description' => '_fluxis_seo_description', 'focus_keyword' => '_fluxis_seo_focus_keyword'];
 
+    /** Yoast SEO's primary category of a product (protocol §13.2). */
+    public const YOAST_PRIMARY_CATEGORY_META = '_yoast_wpseo_primary_product_cat';
+
     /** Depth of upserts in progress; the automatic-sync hooks stay quiet meanwhile (protocol §12.2 loop guard). */
     private static int $applying = 0;
+
+    /**
+     * What the categories of the item being written resolved to (protocol §13.2),
+     * null when the item carried none.
+     *
+     * @var list<array{path: list<string>, id: int, parent_id: int|null}>|null
+     */
+    private ?array $categoryAnswers = null;
 
     public function __construct(
         private readonly string $weightUnit,
@@ -42,6 +53,7 @@ final class Upserter
         private readonly bool $yoastActive,
         private readonly ?ImageImporter $images,
         private readonly Logger $logger,
+        private readonly CategoryTerms $categories = new CategoryTerms(),
     ) {}
 
     public function convertWeight(float $grams): string
@@ -81,7 +93,7 @@ final class Upserter
 
     /**
      * @param list<array<string, mixed>> $items
-     * @return list<array{sku: string, status: string, product_id: int|null, error_code: string|null}>
+     * @return list<array<string, mixed>> per item {sku, status, product_id, error_code}, plus `categories` (protocol §13.2) when it carried any
      */
     public function upsertBatch(array $items, string $source, ?string $runId): array
     {
@@ -102,14 +114,21 @@ final class Upserter
 
     /**
      * @param array<string, mixed> $item
-     * @return array{sku: string, status: string, product_id: int|null, error_code: string|null}
+     * @return array<string, mixed> {sku, status, product_id, error_code}, plus `categories: [{path, id, parent_id}]` when the item carried categories
      */
     public function upsert(array $item): array
     {
         self::$applying++;
+        $this->categoryAnswers = null;
 
         try {
-            return $this->write($item);
+            $result = $this->write($item);
+
+            if ($this->categoryAnswers !== null && $result['status'] !== 'failed') {
+                $result['categories'] = $this->categoryAnswers;
+            }
+
+            return $result;
         } finally {
             self::$applying--;
         }
@@ -301,15 +320,15 @@ final class Upserter
             }
         }
 
-        foreach (['categories' => ['product_cat', 'get_category_ids', 'set_category_ids'], 'tags' => ['product_tag', 'get_tag_ids', 'set_tag_ids']] as $key => [$taxonomy, $getter, $setter]) {
-            if ($isVariation || ! isset($item[$key]) || ! is_array($item[$key])) {
-                continue;
-            }
+        if (! $isVariation && isset($item['categories']) && is_array($item['categories'])) {
+            $touched = $this->applyCategories($product, $item['categories']) || $touched;
+        }
 
-            $ids = $this->termIds($item[$key], $taxonomy);
+        if (! $isVariation && isset($item['tags']) && is_array($item['tags'])) {
+            $ids = $this->termIds($item['tags'], 'product_tag');
 
-            if (! self::sameIds((array) $product->{$getter}('edit'), $ids)) {
-                $product->{$setter}($ids);
+            if (! self::sameIds((array) $product->get_tag_ids('edit'), $ids)) {
+                $product->set_tag_ids($ids);
                 $touched = true;
             }
         }
@@ -335,6 +354,41 @@ final class Upserter
                 $stored = is_scalar($value) ? wp_kses_post((string) $value) : (string) wp_json_encode($value);
                 $touched = self::updateMeta($product, self::customMetaKey((string) $key), $stored) || $touched;
             }
+        }
+
+        return $touched;
+    }
+
+    /**
+     * Protocol §13.2: each entry is resolved by term id, then by its path of names
+     * (creating missing levels) — {@see CategoryTerms}. The resolved terms replace the
+     * product's categories; the entry marked primary becomes Yoast's primary category
+     * when Yoast is active. An empty list leaves the product's categories alone.
+     *
+     * @param array<mixed> $entries
+     */
+    private function applyCategories(\WC_Product $product, array $entries): bool
+    {
+        if ($entries === []) {
+            return false;
+        }
+
+        $resolved = $this->categories->resolve($entries);
+        $this->categoryAnswers = $resolved['answers'];
+
+        if ($resolved['ids'] === []) {
+            return false;
+        }
+
+        $touched = false;
+
+        if (! self::sameIds((array) $product->get_category_ids('edit'), $resolved['ids'])) {
+            $product->set_category_ids($resolved['ids']);
+            $touched = true;
+        }
+
+        if ($resolved['primary'] !== null && $this->yoastActive) {
+            $touched = self::updateMeta($product, self::YOAST_PRIMARY_CATEGORY_META, (string) $resolved['primary']) || $touched;
         }
 
         return $touched;

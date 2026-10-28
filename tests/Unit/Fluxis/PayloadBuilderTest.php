@@ -46,7 +46,7 @@ it('maps a simple product onto the protocol product object', function () {
         'gtin' => '8710000000001',
         'weight' => '1.2',
         'dimensions' => ['length' => '10', 'width' => '5', 'height' => '2'],
-        'categories' => [['id' => 1, 'name' => 'Shoes', 'slug' => 'shoes']],
+        'categories' => [['id' => 1, 'name' => 'Shoes', 'slug' => 'shoes', 'parent' => 0, 'path' => ['Shoes']]],
         'tags' => [],
         'date_modified_gmt' => '2026-10-19T10:00:00Z',
         'date_created_gmt' => '2026-01-01T08:00:00Z',
@@ -57,6 +57,18 @@ it('maps a simple product onto the protocol product object', function () {
         ])
         ->and($payload['custom'])->toBeInstanceOf(stdClass::class)
         ->and($payload)->not->toHaveKey('variations');
+});
+
+it('never sends WooCommerce\'s default category with a product', function () {
+    WpStubState::$options['default_product_cat'] = 15;
+    WpStubState::$terms[10]['product_cat'] = [
+        (object) ['term_id' => 15, 'name' => 'Uncategorized', 'slug' => 'uncategorized'],
+        (object) ['term_id' => 1, 'name' => 'Shoes', 'slug' => 'shoes'],
+    ];
+
+    $payload = (new PayloadBuilder('kg', 'cm', false))->build(fluxis_product());
+
+    expect(array_column($payload['categories'], 'id'))->toBe([1]);
 });
 
 it('reports the store units from the WooCommerce settings', function (string $weight, string $dimension) {
