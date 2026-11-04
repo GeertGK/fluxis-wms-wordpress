@@ -6,6 +6,8 @@ namespace Fluxis\WooCommerce\Rest;
 
 use Fluxis\WooCommerce\Connection\Secrets;
 use Fluxis\WooCommerce\Connection\Verifier;
+use Fluxis\WooCommerce\Orders\OrderFeed;
+use Fluxis\WooCommerce\Orders\ShipmentRecorder;
 use Fluxis\WooCommerce\Plugin;
 use Fluxis\WooCommerce\Products\AttributeCatalog;
 use Fluxis\WooCommerce\Products\CategoryTerms;
@@ -22,6 +24,10 @@ defined('ABSPATH') || exit;
  * before permission_callback runs, so the routes declare no args and validate
  * inside the callback). permission_callback only accepts requests that passed
  * the signature check. Errors use the protocol envelope {"error","message"}.
+ *
+ * Orders (protocol §14): GET /orders is the feed Fluxis pulls orders from, and
+ * POST /orders/{id}/shipment is how Fluxis reports a shipment (note, tracking,
+ * completion). Fluxis always takes the initiative; the plugin never pushes orders.
  */
 final class Routes
 {
@@ -72,6 +78,18 @@ final class Routes
             'permission_callback' => [$this, 'permission'],
             // No declared args: WordPress would validate them before permission_callback
             // and answer unauthenticated callers with field details. See upsert().
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/orders', [
+            'methods' => \WP_REST_Server::READABLE,
+            'callback' => [$this, 'orders'],
+            'permission_callback' => [$this, 'permission'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/orders/(?P<id>\d+)/shipment', [
+            'methods' => \WP_REST_Server::CREATABLE,
+            'callback' => [$this, 'shipment'],
+            'permission_callback' => [$this, 'permission'],
         ]);
 
         register_rest_route(self::NAMESPACE, '/disconnect', [
@@ -218,6 +236,61 @@ final class Routes
         $this->logger->info('Fluxis upsert processed', ['source' => $source, 'run_id' => $runId, 'count' => count($results)]);
 
         return new \WP_REST_Response(['results' => $results], 200);
+    }
+
+    /**
+     * GET /orders (protocol §14.1): one page of shop orders, `date_modified ASC, id ASC`.
+     */
+    public function orders(\WP_REST_Request $request): \WP_REST_Response
+    {
+        $query = $request->get_query_params();
+        $fields = OrderFeed::errors($query);
+
+        if ($fields !== []) {
+            return new \WP_REST_Response(['error' => 'validation_failed', 'message' => 'The request is invalid.', 'fields' => $fields], 422);
+        }
+
+        return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL] + (new OrderFeed())->page($query) + ['time' => gmdate('Y-m-d\TH:i:s\Z')], 200);
+    }
+
+    /**
+     * POST /orders/{id}/shipment (protocol §14.2). A repeated shipment_id is
+     * answered `recorded: false` before the shippable check, so a retry of a
+     * shipment that was recorded keeps succeeding even if the order moved on.
+     */
+    public function shipment(\WP_REST_Request $request): \WP_REST_Response
+    {
+        $urlParams = $request->get_url_params();
+        $order = ShipmentRecorder::findOrder((int) ($urlParams['id'] ?? 0));
+
+        if ($order === null) {
+            return self::error('order_not_found', 'The order does not exist.', 404);
+        }
+
+        $body = $request->get_json_params();
+        $fields = ShipmentRecorder::errors($body, $order);
+
+        if ($fields !== []) {
+            return new \WP_REST_Response(['error' => 'validation_failed', 'message' => 'The request is invalid.', 'fields' => $fields], 422);
+        }
+
+        /** @var array<string, mixed> $body */
+        if (! ShipmentRecorder::isRecorded($order, (string) $body['shipment_id']) && ! ShipmentRecorder::isShippable($order)) {
+            return self::error('order_not_shippable', 'The order is cancelled, refunded or failed.', 409);
+        }
+
+        $recorded = (new ShipmentRecorder())->record($order, $body);
+
+        if ($recorded) {
+            $this->logger->info('Fluxis shipment recorded', ['order_id' => $order->get_id(), 'shipment_id' => $body['shipment_id']]);
+        }
+
+        return new \WP_REST_Response([
+            'protocol' => FLUXIS_WC_PROTOCOL,
+            'order_id' => (int) $order->get_id(),
+            'status' => (string) $order->get_status(),
+            'recorded' => $recorded,
+        ], 200);
     }
 
     public function disconnect(\WP_REST_Request $request): \WP_REST_Response

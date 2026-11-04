@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.1
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.0.2
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -43,6 +43,9 @@ Yes. The plugin connects your store to a Fluxis workspace. The pairing code is c
 Nothing is deleted from WooCommerce. Pending background deliveries to Fluxis are cancelled, and the connection can be resumed by activating the plugin again.
 
 == Changelog ==
+
+= 1.1.0 =
+* Orders: Fluxis can read the shop's orders (paged, oldest change first) and report shipments back. A reported shipment adds an order note with track & trace (mailed to the customer when Fluxis asks), is added to WooCommerce Shipment Tracking when that extension is active, and completes the order once everything is shipped.
 
 = 1.0.2 =
 * WooCommerce's default category ("Uncategorized") is no longer sent to Fluxis, neither with a product nor in the category tree.

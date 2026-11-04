@@ -53,6 +53,7 @@ it('treats the namespace case-insensitively, like WordPress route matching', fun
     ['/fluxis/v1/status', true],
     ['/FLUXIS/v1/status', true],
     ['/Fluxis/V1/products/upsert', true],
+    ['/fluxis/v1/orders/1234/shipment', true],
     ['/fluxis/v1', true],
     ['/fluxis/v1/', true],
     ['/fluxis/v10/status', false],

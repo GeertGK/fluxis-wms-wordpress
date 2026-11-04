@@ -7,3 +7,4 @@
 */
 
 require_once __DIR__ . '/Stubs/wp-functions.php';
+require_once __DIR__ . '/Stubs/wc-orders.php';

@@ -88,8 +88,17 @@ final class WpStubState
     /** @var array<int, string> post id => post type (get_post_type) */
     public static array $postTypes = [];
 
+    /** @var array<int, WC_Order> orders wc_get_order()/wc_get_orders() read, in insertion order */
+    public static array $orders = [];
+
+    /** @var list<array<string, mixed>> arguments of every wc_get_orders() call */
+    public static array $orderQueries = [];
+
     public static function reset(): void
     {
+        self::$orders = [];
+        self::$orderQueries = [];
+        WC_Tax::$rates = [];
         self::$actions = [];
         self::$postFields = [];
         self::$postTypes = [];
@@ -491,6 +500,28 @@ if (! class_exists('WP_REST_Request')) {
             $decoded = json_decode((string) $this->body, true);
 
             return is_array($decoded) ? $decoded : null;
+        }
+
+        /** @var array<string, mixed> */
+        public array $queryParams = [];
+
+        /** @var array<string, mixed> */
+        public array $urlParams = [];
+
+        /**
+         * @return array<string, mixed>
+         */
+        public function get_query_params(): array
+        {
+            return $this->queryParams;
+        }
+
+        /**
+         * @return array<string, mixed>
+         */
+        public function get_url_params(): array
+        {
+            return $this->urlParams;
         }
     }
 }
