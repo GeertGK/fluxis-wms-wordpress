@@ -27,7 +27,7 @@ defined('ABSPATH') || exit;
  *
  * Orders (protocol §14): GET /orders is the feed Fluxis pulls orders from, and
  * POST /orders/{id}/shipment is how Fluxis reports a shipment (note, tracking,
- * completion). Fluxis always takes the initiative; the plugin never pushes orders.
+ * completion), GET /order-statuses lists the shop's statuses for the mapping. Fluxis always takes the initiative; the plugin never pushes orders.
  */
 final class Routes
 {
@@ -83,6 +83,12 @@ final class Routes
         register_rest_route(self::NAMESPACE, '/orders', [
             'methods' => \WP_REST_Server::READABLE,
             'callback' => [$this, 'orders'],
+            'permission_callback' => [$this, 'permission'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/order-statuses', [
+            'methods' => \WP_REST_Server::READABLE,
+            'callback' => [$this, 'orderStatuses'],
             'permission_callback' => [$this, 'permission'],
         ]);
 
@@ -251,6 +257,15 @@ final class Routes
         }
 
         return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL] + (new OrderFeed())->page($query) + ['time' => gmdate('Y-m-d\TH:i:s\Z')], 200);
+    }
+
+    /**
+     * GET /order-statuses (protocol §14.3): the shop's order statuses with their
+     * names, for the status mapping in Fluxis.
+     */
+    public function orderStatuses(\WP_REST_Request $request): \WP_REST_Response
+    {
+        return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL, 'order_statuses' => OrderFeed::statusList()], 200);
     }
 
     /**

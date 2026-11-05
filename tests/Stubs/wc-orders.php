@@ -227,7 +227,7 @@ if (! function_exists('wc_get_order_statuses')) {
             'wc-refunded' => 'Refunded',
             'wc-failed' => 'Failed',
             'wc-checkout-draft' => 'Draft',
-        ];
+        ] + WpStubState::$extraOrderStatuses;
     }
 }
 

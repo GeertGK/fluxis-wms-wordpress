@@ -94,10 +94,14 @@ final class WpStubState
     /** @var list<array<string, mixed>> arguments of every wc_get_orders() call */
     public static array $orderQueries = [];
 
+    /** @var array<string, string> statuses other plugins register, added to wc_get_order_statuses() */
+    public static array $extraOrderStatuses = [];
+
     public static function reset(): void
     {
         self::$orders = [];
         self::$orderQueries = [];
+        self::$extraOrderStatuses = [];
         WC_Tax::$rates = [];
         self::$actions = [];
         self::$postFields = [];

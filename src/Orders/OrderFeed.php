@@ -107,6 +107,25 @@ final class OrderFeed
     }
 
     /**
+     * GET /order-statuses (protocol §14.3): every order status the shop knows,
+     * including those registered by other plugins, as `{slug, label}` with the slug
+     * without the `wc-` prefix, in WooCommerce's order; never the excluded ones,
+     * since the feed never delivers orders in them.
+     *
+     * @return list<array{slug: string, label: string}>
+     */
+    public static function statusList(): array
+    {
+        $list = [];
+
+        foreach (self::knownStatuses() as $slug => $label) {
+            $list[] = ['slug' => $slug, 'label' => $label];
+        }
+
+        return $list;
+    }
+
+    /**
      * Statuses to query, without the `wc-` prefix: the requested ones that the
      * shop knows, or every known status when none were requested; never the
      * excluded ones.
@@ -115,8 +134,7 @@ final class OrderFeed
      */
     public static function statuses(mixed $requested): array
     {
-        $known = array_map(static fn(string $status): string => self::stripPrefix($status), array_map('strval', array_keys(wc_get_order_statuses())));
-        $known = array_values(array_diff($known, self::EXCLUDED_STATUSES));
+        $known = array_keys(self::knownStatuses());
 
         if (! is_string($requested) || trim($requested) === '') {
             return $known;
@@ -171,6 +189,27 @@ final class OrderFeed
         }
 
         return is_string($value) && preg_match('/^-?\d{1,9}$/', trim($value)) === 1 ? (int) trim($value) : null;
+    }
+
+    /**
+     * Statuses of wc_get_order_statuses() without the `wc-` prefix and without the
+     * excluded ones: slug => label.
+     *
+     * @return array<string, string>
+     */
+    private static function knownStatuses(): array
+    {
+        $known = [];
+
+        foreach (wc_get_order_statuses() as $status => $label) {
+            $slug = self::stripPrefix((string) $status);
+
+            if ($slug !== '' && ! in_array($slug, self::EXCLUDED_STATUSES, true) && ! isset($known[$slug])) {
+                $known[$slug] = trim((string) $label);
+            }
+        }
+
+        return $known;
     }
 
     private static function stripPrefix(string $status): string
