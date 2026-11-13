@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.1
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.2.0
+Stable tag: 1.3.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -38,11 +38,18 @@ The AI features require the AI Optimizer add-on in Fluxis.
 
 Yes. The plugin connects your store to a Fluxis workspace. The pairing code is created in Fluxis when you add the WooCommerce integration.
 
+= How do I update the plugin? =
+
+New versions appear under Dashboard → Updates like any other plugin, and automatic updates can be switched on in the plugin list. Sites that deploy WordPress from git or Composer install the plugin with `composer require haste/fluxis-for-woocommerce` instead; the in-dashboard updater stays off when `DISALLOW_FILE_MODS` is set, or when `FLUXIS_WC_DISABLE_UPDATES` is defined as true in wp-config.php.
+
 = What happens to my products when I deactivate the plugin? =
 
 Nothing is deleted from WooCommerce. Pending background deliveries to Fluxis are cancelled, and the connection can be resumed by activating the plugin again.
 
 == Changelog ==
+
+= 1.3.0 =
+* Updates: new versions are offered in WordPress (Dashboard → Updates, automatic updates) straight from the plugin's GitHub releases. Off on sites with DISALLOW_FILE_MODS or FLUXIS_WC_DISABLE_UPDATES.
 
 = 1.2.0 =
 * Orders: Fluxis can read the shop's order statuses with their names, including statuses added by other plugins, so you can choose per status what Fluxis does with an order.

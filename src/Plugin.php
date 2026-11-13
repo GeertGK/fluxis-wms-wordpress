@@ -27,6 +27,7 @@ use Fluxis\WooCommerce\Rest\OptionWindowCounter;
 use Fluxis\WooCommerce\Rest\RateLimiter;
 use Fluxis\WooCommerce\Rest\Routes;
 use Fluxis\WooCommerce\Support\Logger;
+use Fluxis\WooCommerce\Support\Updater;
 use Fluxis\WooCommerce\Support\SystemClock;
 use Fluxis\WooCommerce\Sync\AutoSync;
 use Fluxis\WooCommerce\Sync\SyncQueue;
@@ -70,6 +71,8 @@ final class Plugin
         $this->booted = true;
 
         add_action('init', [$this, 'loadTextDomain']);
+        // Updates are offered even while WooCommerce is missing, so a fix can always reach the site.
+        (new Updater(new WpHttpTransport(), plugin_basename(FLUXIS_WC_FILE)))->register();
 
         if (! class_exists('WooCommerce') || ! function_exists('WC')) {
             add_action('admin_notices', [$this, 'missingWooCommerceNotice']);

@@ -34,6 +34,11 @@ This writes `dist/fluxis-for-woocommerce-<version>.zip` (version from the plugin
 
 Releases: bump `Version` in the plugin header, `FLUXIS_WC_VERSION` and `Stable tag` in `readme.txt`, then push a tag `v<version>`. The release workflow builds the zip and attaches it to a GitHub Release.
 
+## Updates
+
+- **WordPress dashboard:** the header's `Update URI` points at GitHub, so WordPress asks `src/Support/Updater.php` (filter `update_plugins_github.com`) for the latest release instead of WordPress.org. A release counts when its tag is `v<version>` and it carries `fluxis-for-woocommerce-<version>.zip`; the answer is cached for 6 hours (1 hour after a failure), and "Check again" on Dashboard → Updates asks GitHub right away.
+- **git / Composer sites:** `composer require haste/fluxis-for-woocommerce` (Packagist; Bedrock installs `wordpress-plugin` packages into the plugins folder). The dashboard updater stays off when `DISALLOW_FILE_MODS` is set or `FLUXIS_WC_DISABLE_UPDATES` is true.
+
 ## Local dev site
 
 The local WooCommerce dev site (`~/Development/woocommerce-dev`, Bedrock, http://woo.test) bind-mounts this checkout into its WordPress container as the plugin directory. In its `compose.yaml`:

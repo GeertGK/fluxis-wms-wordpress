@@ -1051,3 +1051,10 @@ if (! function_exists('delete_post_meta')) {
         return true;
     }
 }
+
+if (! function_exists('trailingslashit')) {
+    function trailingslashit(string $value): string
+    {
+        return rtrim($value, '/\\') . '/';
+    }
+}

@@ -4,11 +4,12 @@
  * Plugin Name:          Fluxis for WooCommerce
  * Plugin URI:           https://fluxis.io
  * Description:          Connects WooCommerce to Fluxis: sync products to Fluxis and optimize product texts and images with the Fluxis AI Optimizer.
- * Version:              1.2.0
+ * Version:              1.3.0
  * Requires at least:    6.6
  * Tested up to:         7.1
  * Requires PHP:         8.1
  * Requires Plugins:     woocommerce
+ * Update URI:           https://github.com/GeertGK/fluxis-wms-wordpress
  * Author:               Haste
  * Author URI:           https://fluxis.io
  * License:              GPL-2.0-or-later
@@ -23,7 +24,7 @@ declare(strict_types=1);
 
 defined('ABSPATH') || exit;
 
-const FLUXIS_WC_VERSION = '1.2.0';
+const FLUXIS_WC_VERSION = '1.3.0';
 const FLUXIS_WC_PROTOCOL = 1;
 const FLUXIS_WC_MIN_PHP = '8.1';
 const FLUXIS_WC_FILE = __FILE__;
