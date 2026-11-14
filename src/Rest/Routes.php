@@ -13,6 +13,7 @@ use Fluxis\WooCommerce\Products\AttributeCatalog;
 use Fluxis\WooCommerce\Products\CategoryTerms;
 use Fluxis\WooCommerce\Products\Upserter;
 use Fluxis\WooCommerce\Support\Logger;
+use Fluxis\WooCommerce\Sync\FirstImport;
 
 defined('ABSPATH') || exit;
 
@@ -28,6 +29,10 @@ defined('ABSPATH') || exit;
  * Orders (protocol §14): GET /orders is the feed Fluxis pulls orders from, and
  * POST /orders/{id}/shipment is how Fluxis reports a shipment (note, tracking,
  * completion), GET /order-statuses lists the shop's statuses for the mapping. Fluxis always takes the initiative; the plugin never pushes orders.
+ *
+ * First import (protocol §15): POST /import/start starts the full product sync as
+ * the tracked batch (origin "fluxis") unless a tracked batch is still running, and
+ * GET /import/progress answers the tracked batch, whatever started it.
  */
 final class Routes
 {
@@ -95,6 +100,18 @@ final class Routes
         register_rest_route(self::NAMESPACE, '/orders/(?P<id>\d+)/shipment', [
             'methods' => \WP_REST_Server::CREATABLE,
             'callback' => [$this, 'shipment'],
+            'permission_callback' => [$this, 'permission'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/import/start', [
+            'methods' => \WP_REST_Server::CREATABLE,
+            'callback' => [$this, 'importStart'],
+            'permission_callback' => [$this, 'permission'],
+        ]);
+
+        register_rest_route(self::NAMESPACE, '/import/progress', [
+            'methods' => \WP_REST_Server::READABLE,
+            'callback' => [$this, 'importProgress'],
             'permission_callback' => [$this, 'permission'],
         ]);
 
@@ -308,6 +325,29 @@ final class Routes
         ], 200);
     }
 
+    /**
+     * POST /import/start (protocol §15): starts the first import, or answers the
+     * tracked batch that is still running with `started: false`.
+     */
+    public function importStart(\WP_REST_Request $request): \WP_REST_Response
+    {
+        $result = $this->firstImport()->start();
+
+        if ($result['started']) {
+            $this->logger->info('First import started by Fluxis', ['batch' => $result['batch']['id'] ?? null]);
+        }
+
+        return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL] + $result, 200);
+    }
+
+    /**
+     * GET /import/progress (protocol §15): the tracked batch, or null.
+     */
+    public function importProgress(\WP_REST_Request $request): \WP_REST_Response
+    {
+        return new \WP_REST_Response(['protocol' => FLUXIS_WC_PROTOCOL, 'batch' => $this->firstImport()->progress()], 200);
+    }
+
     public function disconnect(\WP_REST_Request $request): \WP_REST_Response
     {
         $this->secrets->clear();
@@ -387,6 +427,11 @@ final class Routes
         unset($query['rest_route']);
 
         return $query === [] ? $path : $path . '?' . http_build_query($query, '', '&', PHP_QUERY_RFC3986);
+    }
+
+    private function firstImport(): FirstImport
+    {
+        return new FirstImport(Plugin::instance()->syncQueue());
     }
 
     private static function error(string $code, string $message, int $status): \WP_REST_Response

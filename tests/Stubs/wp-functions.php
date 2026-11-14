@@ -97,8 +97,12 @@ final class WpStubState
     /** @var array<string, string> statuses other plugins register, added to wc_get_order_statuses() */
     public static array $extraOrderStatuses = [];
 
+    /** @var array<string, array<string, mixed>> "namespace/route" => register_rest_route() args */
+    public static array $restRoutes = [];
+
     public static function reset(): void
     {
+        self::$restRoutes = [];
         self::$orders = [];
         self::$orderQueries = [];
         self::$extraOrderStatuses = [];
@@ -1058,3 +1062,72 @@ if (! function_exists('trailingslashit')) {
         return rtrim($value, '/\\') . '/';
     }
 }
+
+if (! function_exists('register_rest_route')) {
+    function register_rest_route(string $namespace, string $route, array $args = [], bool $override = false): bool
+    {
+        WpStubState::$restRoutes[$namespace . $route] = $args;
+
+        return true;
+    }
+}
+
+if (! function_exists('add_option')) {
+    function add_option(string $option, mixed $value = '', string $deprecated = '', mixed $autoload = null): bool
+    {
+        if (array_key_exists($option, WpStubState::$options)) {
+            return false;
+        }
+
+        WpStubState::$options[$option] = $value;
+
+        return true;
+    }
+}
+
+if (! function_exists('delete_option')) {
+    function delete_option(string $option): bool
+    {
+        unset(WpStubState::$options[$option]);
+
+        return true;
+    }
+}
+
+if (! function_exists('wp_cache_delete')) {
+    function wp_cache_delete(string $key, string $group = ''): bool
+    {
+        return true;
+    }
+}
+
+/**
+ * Just enough of $wpdb for SyncQueue's counters: reads and increments options in WpStubState.
+ */
+final class WpdbStub
+{
+    public string $options = 'wp_options';
+
+    public function prepare(string $query, mixed ...$args): string
+    {
+        return vsprintf(str_replace(['%d', '%s'], ['%d', "'%s'"], $query), $args);
+    }
+
+    public function get_var(string $query): mixed
+    {
+        return preg_match("/option_name = '([^']+)'/", $query, $match) === 1 ? (WpStubState::$options[$match[1]] ?? null) : null;
+    }
+
+    public function query(string $query): int
+    {
+        if (preg_match("/option_value \\+ (-?\\d+) WHERE option_name = '([^']+)'/", $query, $match) !== 1 || ! array_key_exists($match[2], WpStubState::$options)) {
+            return 0;
+        }
+
+        WpStubState::$options[$match[2]] = (int) WpStubState::$options[$match[2]] + (int) $match[1];
+
+        return 1;
+    }
+}
+
+$GLOBALS['wpdb'] ??= new WpdbStub();

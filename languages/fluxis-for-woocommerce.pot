@@ -1401,6 +1401,10 @@ msgid "Single product"
 msgstr ""
 
 #: src/Sync/ProgressText.php:46
+msgid "First import from Fluxis"
+msgstr ""
+
+#: src/Sync/ProgressText.php:47
 msgid "Earlier sync"
 msgstr ""
 

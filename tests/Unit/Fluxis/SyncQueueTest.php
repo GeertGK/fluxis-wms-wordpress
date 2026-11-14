@@ -72,6 +72,7 @@ describe('progress', function () {
         ['bulk', 4, 'Bulk action (4 products) — started T100'],
         ['bulk', 1, 'Bulk action (1 product) — started T100'],
         ['single', 1, 'Single product — started T100'],
+        ['fluxis', 30, 'First import from Fluxis — started T100'],
         ['unknown', 4, 'Earlier sync — started T100'],
     ]);
 

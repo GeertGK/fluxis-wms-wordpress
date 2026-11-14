@@ -24,7 +24,8 @@ defined('ABSPATH') || exit;
  * Progress is counted per catalogue item: a product and each of its variations
  * are one unit each (variations travel inside their parent's delivery, or one by
  * one when the parent has no SKU). A batch remembers what started it ("Sync all",
- * a bulk action or a single product) and stays visible until the next one starts.
+ * a bulk action, a single product or the first import from Fluxis) and stays
+ * visible until the next one starts.
  */
 final class SyncQueue
 {
@@ -52,6 +53,9 @@ final class SyncQueue
     public const ORIGIN_BULK = 'bulk';
 
     public const ORIGIN_SINGLE = 'single';
+
+    /** The first import Fluxis started (protocol §15). */
+    public const ORIGIN_FLUXIS = 'fluxis';
 
     public const OPTION_CURRENT = 'fluxis_wc_current_batch';
 

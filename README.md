@@ -34,6 +34,18 @@ This writes `dist/fluxis-for-woocommerce-<version>.zip` (version from the plugin
 
 Releases: bump `Version` in the plugin header, `FLUXIS_WC_VERSION` and `Stable tag` in `readme.txt`, then push a tag `v<version>`. The release workflow builds the zip and attaches it to a GitHub Release.
 
+## REST API
+
+Fluxis calls the store on the signed namespace `fluxis/v1` (`src/Rest/Routes.php`); every route checks the request signature before anything else and answers errors as `{"error","message"}`.
+
+- `GET /status` – store and plugin metadata, product count
+- `GET /attributes` (§11.1), `GET /categories` (§13.1) – attribute catalogue and category tree
+- `POST /products/upsert` – products from Fluxis (push, AI runs)
+- `GET /orders`, `POST /orders/{id}/shipment`, `GET /order-statuses` (§14) – order feed, shipment reporting, status list
+- `POST /import/start` (§15) – starts the first import: the whole catalogue as the tracked sync batch with origin `fluxis`. Answers `{"protocol":1,"started":true,"batch":{…}}`, or `"started":false` with the tracked batch when that one is still running (nothing new is started).
+- `GET /import/progress` (§15) – `{"protocol":1,"batch":{…}|null}`: the tracked batch, whatever started it. `batch` holds `id, origin, products, variations, total, sent, failed, skipped, too_large, processed, percent, done, started_at, finished_at`.
+- `POST /disconnect` – removes the connection
+
 ## Updates
 
 - **WordPress dashboard:** the header's `Update URI` points at GitHub, so WordPress asks `src/Support/Updater.php` (filter `update_plugins_github.com`) for the latest release instead of WordPress.org. A release counts when its tag is `v<version>` and it carries `fluxis-for-woocommerce-<version>.zip`; the answer is cached for 6 hours (1 hour after a failure), and "Check again" on Dashboard → Updates asks GitHub right away.

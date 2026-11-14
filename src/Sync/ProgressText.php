@@ -43,6 +43,7 @@ final class ProgressText
             /* translators: %d: number of products selected in the bulk action */
             SyncQueue::ORIGIN_BULK => sprintf(_n('Bulk action (%d product)', 'Bulk action (%d products)', $products, 'fluxis-for-woocommerce'), $products),
             SyncQueue::ORIGIN_SINGLE => __('Single product', 'fluxis-for-woocommerce'),
+            SyncQueue::ORIGIN_FLUXIS => __('First import from Fluxis', 'fluxis-for-woocommerce'),
             default => __('Earlier sync', 'fluxis-for-woocommerce'),
         };
     }
