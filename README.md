@@ -46,6 +46,17 @@ Fluxis calls the store on the signed namespace `fluxis/v1` (`src/Rest/Routes.php
 - `GET /import/progress` (§15) – `{"protocol":1,"batch":{…}|null}`: the tracked batch, whatever started it. `batch` holds `id, origin, products, variations, total, sent, failed, skipped, too_large, processed, percent, done, started_at, finished_at`.
 - `POST /disconnect` – removes the connection
 
+## Extension hooks (for companion plugins)
+
+Companion plugins (such as Fluxis Guard) build on this plugin's connection instead of authenticating on their own. The contract:
+
+- `fluxis_wc_loaded` (action, `Plugin $plugin`) – fires in `plugins_loaded` once WooCommerce and this plugin are up. `$plugin->secrets()->load()` gives the `Connection` (or null) and `$plugin->client()` the signed client.
+- `fluxis_wc_rest_routes` (action, `string $namespace, callable $permission`) – register routes under `fluxis/v1/<extension>/…` with `$permission` as `permission_callback`. Every route under the namespace is signature-checked before it runs, exactly like the routes above.
+- `fluxis_wc_product_upserted` (action, `int $productId, array $item, string $source, ?string $runId, string $status`) – after each item of `POST /products/upsert` is saved (`created`, `updated` or `skipped`; never for trashed or failed items). `$item` is the item as Fluxis sent it, keys this plugin does not know included. A listener that throws is logged and never changes the item's result.
+- `FluxisClient::postExtension(Connection, string $path, array $payload)` – a signed `POST` to `/connect/woocommerce/{id}/{path}`; `$path` is lower-case segments (`guard/source-changes`).
+
+Check `FLUXIS_WC_VERSION` (>= 1.5.0) before relying on these.
+
 ## Updates
 
 - **WordPress dashboard:** the header's `Update URI` points at GitHub, so WordPress asks `src/Support/Updater.php` (filter `update_plugins_github.com`) for the latest release instead of WordPress.org. A release counts when its tag is `v<version>` and it carries `fluxis-for-woocommerce-<version>.zip`; the answer is cached for 6 hours (1 hour after a failure), and "Check again" on Dashboard → Updates asks GitHub right away.

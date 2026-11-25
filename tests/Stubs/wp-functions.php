@@ -100,9 +100,17 @@ final class WpStubState
     /** @var array<string, array<string, mixed>> "namespace/route" => register_rest_route() args */
     public static array $restRoutes = [];
 
+    /** @var array<string, list<callable>> hook => listeners added with add_action()/add_filter() */
+    public static array $hooks = [];
+
+    /** @var list<array{hook: string, args: array<mixed>}> every do_action() call */
+    public static array $fired = [];
+
     public static function reset(): void
     {
         self::$restRoutes = [];
+        self::$hooks = [];
+        self::$fired = [];
         self::$orders = [];
         self::$orderQueries = [];
         self::$extraOrderStatuses = [];
@@ -1060,6 +1068,26 @@ if (! function_exists('trailingslashit')) {
     function trailingslashit(string $value): string
     {
         return rtrim($value, '/\\') . '/';
+    }
+}
+
+if (! function_exists('add_action')) {
+    function add_action(string $hook, callable $callback, int $priority = 10, int $acceptedArgs = 1): bool
+    {
+        WpStubState::$hooks[$hook][] = $callback;
+
+        return true;
+    }
+}
+
+if (! function_exists('do_action')) {
+    function do_action(string $hook, mixed ...$args): void
+    {
+        WpStubState::$fired[] = ['hook' => $hook, 'args' => $args];
+
+        foreach (WpStubState::$hooks[$hook] ?? [] as $callback) {
+            $callback(...$args);
+        }
     }
 }
 

@@ -114,6 +114,24 @@ final class FluxisClient
     }
 
     /**
+     * A signed POST to a companion plugin's Fluxis route, under
+     * /connect/woocommerce/{id}/{path} (Fluxis Guard: `guard/source-changes`).
+     * The path is lower-case segments only, so an extension can never leave the
+     * connection's own prefix.
+     *
+     * @param array<string, mixed> $payload
+     * @return array<string, mixed>
+     */
+    public function postExtension(Connection $connection, string $path, array $payload): array
+    {
+        if (preg_match('#^[a-z0-9-]+(/[a-z0-9-]+)*$#', $path) !== 1) {
+            throw new \InvalidArgumentException('An extension path is lower-case segments separated by slashes.');
+        }
+
+        return $this->signed($connection, 'POST', $this->connectUrl($connection, '/' . $path), $payload);
+    }
+
+    /**
      * @param array<string, mixed> $delivery
      * @return array<string, mixed>
      */

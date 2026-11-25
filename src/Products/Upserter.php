@@ -19,6 +19,9 @@ final class Upserter
 {
     public const MAX_BATCH = 50;
 
+    /** Action after each item Fluxis wrote; see announce(). */
+    public const HOOK_UPSERTED = 'fluxis_wc_product_upserted';
+
     public const CUSTOM_META_PREFIX = '_fluxis_cf_';
 
     /** Unix time of the last upsert Fluxis delivered for the product (shown in its Fluxis box). */
@@ -101,15 +104,46 @@ final class Upserter
 
         foreach ($items as $item) {
             try {
-                $results[] = $this->upsert(is_array($item) ? $item : []);
+                $result = $this->upsert(is_array($item) ? $item : []);
             } catch (\Throwable $exception) {
                 $sku = is_array($item) && is_string($item['sku'] ?? null) ? $item['sku'] : '';
                 $this->logger->error('Product upsert failed', ['sku' => $sku, 'source' => $source, 'run_id' => $runId, 'exception' => $exception->getMessage()]);
                 $results[] = ['sku' => $sku, 'status' => 'failed', 'product_id' => null, 'error_code' => self::errorCode($exception)];
+
+                continue;
             }
+
+            $results[] = $result;
+            $this->announce($result, is_array($item) ? $item : [], $source, $runId);
         }
 
         return $results;
+    }
+
+    /**
+     * Tells companion plugins (Fluxis Guard) what Fluxis just wrote, after the
+     * product is saved: `fluxis_wc_product_upserted` with (int $productId,
+     * array $item, string $source, ?string $runId, string $status). A trashed
+     * or failed item is not announced. A listener that throws never changes the
+     * item's result: the write already happened.
+     *
+     * @param array<string, mixed> $result
+     * @param array<string, mixed> $item
+     */
+    private function announce(array $result, array $item, string $source, ?string $runId): void
+    {
+        $productId = (int) ($result['product_id'] ?? 0);
+        $status = (string) ($result['status'] ?? '');
+
+        if ($productId <= 0 || ! in_array($status, ['created', 'updated', 'skipped'], true) || ($item['status'] ?? null) === 'trash') {
+            return;
+        }
+
+        try {
+            do_action(self::HOOK_UPSERTED, $productId, $item, $source, $runId, $status);
+        } catch (\Throwable $exception) {
+            $this->logger->warning('A listener of the product upsert failed', ['product_id' => $productId, 'hook' => self::HOOK_UPSERTED, 'exception' => $exception->getMessage()]);
+        }
     }
 
     /**
