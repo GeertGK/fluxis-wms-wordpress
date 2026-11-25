@@ -6,7 +6,7 @@ Tested up to: 7.1
 Requires PHP: 8.1
 WC requires at least: 9.0
 WC tested up to: 11.2
-Stable tag: 1.4.0
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -47,6 +47,9 @@ New versions appear under Dashboard → Updates like any other plugin, and autom
 Nothing is deleted from WooCommerce. Pending background deliveries to Fluxis are cancelled, and the connection can be resumed by activating the plugin again.
 
 == Changelog ==
+
+= 1.5.0 =
+* Extensions: companion plugins such as Fluxis Guard can build on this plugin's connection to Fluxis. Nothing changes for sites without one.
 
 = 1.4.0 =
 * Products: Fluxis can start the first import of the whole catalogue itself and follow its progress. A sync that is still running is never interrupted; Fluxis follows that one instead. On WooCommerce → Fluxis the batch shows as "First import from Fluxis".

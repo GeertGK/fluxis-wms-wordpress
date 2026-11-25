@@ -38,6 +38,9 @@ final class Routes
 {
     public const NAMESPACE = 'fluxis/v1';
 
+    /** Action for companion plugins to register signed routes: (string $namespace, callable $permission). */
+    public const HOOK_EXTENSION_ROUTES = 'fluxis_wc_rest_routes';
+
     /** @var \WeakMap<\WP_REST_Request, true> requests whose signature verified */
     private \WeakMap $verified;
 
@@ -120,6 +123,14 @@ final class Routes
             'callback' => [$this, 'disconnect'],
             'permission_callback' => [$this, 'permission'],
         ]);
+
+        /*
+         * Companion plugins (Fluxis Guard) add their own routes under this
+         * namespace. Every route under it is signature-checked in authenticate()
+         * already, so an extension route that uses this permission callback is
+         * exactly as protected as the routes above.
+         */
+        do_action(self::HOOK_EXTENSION_ROUTES, self::NAMESPACE, [$this, 'permission']);
     }
 
     /**

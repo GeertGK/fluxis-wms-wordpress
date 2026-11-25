@@ -41,6 +41,9 @@ final class Plugin
 {
     public const TEXT_DOMAIN = 'fluxis-for-woocommerce';
 
+    /** Action with this instance, for companion plugins; see boot(). */
+    public const HOOK_LOADED = 'fluxis_wc_loaded';
+
     private static ?self $instance = null;
 
     private bool $booted = false;
@@ -86,6 +89,8 @@ final class Plugin
         (new AutoSync($this->secrets(), $this->statusCache(), $this->client(), $this->logger()))->register();
         $this->adhocApply()->register();
         AttributeCatalog::registerInvalidation();
+        // Companion plugins (Fluxis Guard) start here, once WooCommerce and this plugin are up.
+        do_action(self::HOOK_LOADED, $this);
 
         if (is_admin()) {
             $gate = new SetupGate($this->secrets(), $this->statusCache());
